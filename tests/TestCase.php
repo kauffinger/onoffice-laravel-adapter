@@ -2,9 +2,8 @@
 
 namespace Kauffinger\OnOfficeApi\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Kauffinger\OnOfficeApi\OnOfficeApiServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
