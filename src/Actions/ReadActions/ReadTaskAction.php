@@ -2,6 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
+use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilter;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMobileUrl;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
@@ -9,7 +10,7 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedAddressId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedEstateId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedProjectId;
 
-class ReadTaskAction
+class ReadTaskAction implements ActionInterface
 {
     use HasFilter;
     use HasPagination;

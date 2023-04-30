@@ -2,6 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
+use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilter;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilterId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFormattableOutput;
@@ -10,7 +11,7 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasMobileUrl;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMultiLanguageEstates;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
 
-class ReadEstateAction
+class ReadEstateAction implements ActionInterface
 {
     use HasFilter;
     use HasFilterId;

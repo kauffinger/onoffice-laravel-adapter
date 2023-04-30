@@ -32,7 +32,7 @@ class Action
 
     }
 
-    public static function read(ReadResource $resource)
+    public static function read(ReadResource $resource): ActionInterface
     {
         return match ($resource) {
             ReadResource::Estate => new ReadEstateAction(),
