@@ -2,7 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
-enum Action: string
+enum ActionType: string
 {
     case Read = 'urn:onoffice-de-ns:smart:2.5:smartml:action:read';
     case Get = 'urn:onoffice-de-ns:smart:2.5:smartml:action:get';

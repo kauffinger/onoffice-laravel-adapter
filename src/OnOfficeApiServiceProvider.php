@@ -2,6 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi;
 
+use Illuminate\Support\Collection;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,5 +18,16 @@ class OnOfficeApiServiceProvider extends PackageServiceProvider
         $package
             ->name('onoffice-laravel-adapter')
             ->hasConfigFile();
+    }
+
+    public function boot()
+    {
+        Collection::macro('putIfNotNull', function ($key, $value) {
+            if ($value != null) {
+                $this->put($key, $value);
+            }
+
+            return $this;
+        });
     }
 }

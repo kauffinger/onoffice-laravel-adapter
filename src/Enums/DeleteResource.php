@@ -2,7 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
-enum Resource: string
+enum DeleteResource: string
 {
     case SearchCriteria = 'searchcriteria';
     case Relation = 'relation';

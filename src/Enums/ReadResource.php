@@ -2,7 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
-enum ReadResource: string
+enum ReadResource: string implements OnOfficeResource
 {
     case Estate = 'estate';
     case Address = 'address';

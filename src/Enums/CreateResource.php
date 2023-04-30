@@ -2,7 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
-enum CreateResource: string implements ResourceEnum
+enum CreateResource: string implements OnOfficeResource
 {
     case Estate = 'estate';
     case Address = 'address';

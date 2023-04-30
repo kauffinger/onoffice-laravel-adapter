@@ -9,7 +9,7 @@ class OnOfficeAuthenticator implements Authenticator
 {
     public function __construct(
         private string $token,
-        private string $secret
+        private string $secret,
     ) {
     }
 
