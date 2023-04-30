@@ -2,7 +2,8 @@
 
 namespace Kauffinger\OnOfficeApi\Actions;
 
-use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction as ReadActionsReadEstateAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Enums\CreateResource;
 use Kauffinger\OnOfficeApi\Enums\DeleteResource;
 use Kauffinger\OnOfficeApi\Enums\DoResource;
@@ -34,7 +35,8 @@ class Action
     public static function read(ReadResource $resource)
     {
         return match ($resource) {
-            ReadResource::Estate => new ReadActionsReadEstateAction(),
+            ReadResource::Estate => new ReadEstateAction(),
+            ReadResource::Task => new ReadTaskAction(),
         };
     }
 }
