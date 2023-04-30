@@ -49,7 +49,6 @@ class ReadEstateAction
     /**
      * @param  string[]  $fields
      * Alternative way to set data, see setData()
-     * @return void
      */
     public function fieldsToRead(string ...$fields): self
     {
