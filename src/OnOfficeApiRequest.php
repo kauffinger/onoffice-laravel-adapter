@@ -3,10 +3,10 @@
 namespace Kauffinger\OnOfficeApi;
 
 use Kauffinger\OnOfficeApi\Actions\ActionInterface;
-use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Repositories\Body\JsonBodyRepository;
 use Saloon\Traits\Body\HasJsonBody;
 
 class OnOfficeApiRequest extends Request implements HasBody
@@ -15,8 +15,9 @@ class OnOfficeApiRequest extends Request implements HasBody
 
     protected Method $method = Method::POST;
 
-    public function __construct(private ActionType $action)
+    public function __construct()
     {
+        $this->body = new JsonBodyRepository();
     }
 
     public function resolveEndpoint(): string
@@ -24,8 +25,19 @@ class OnOfficeApiRequest extends Request implements HasBody
         return '';
     }
 
+    protected function defaultBody(): array
+    {
+        return [];
+    }
+
     public function addAction(ActionInterface $action): void
     {
-        $this->body->add('request', $action->render());
+        $this->body->add(
+            'request',
+            [
+                'actions' => [
+                    $action->render(),
+                ],
+            ]);
     }
 }

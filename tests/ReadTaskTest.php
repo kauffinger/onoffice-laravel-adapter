@@ -2,10 +2,11 @@
 
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
 
 it('can be retrieved from Action base class', function () {
-    $instance = Action::read(ReadResource::Task);
+    $instance = Action::read()->task();
     expect($instance::class)->toBe(ReadTaskAction::class);
 });
 
@@ -25,4 +26,20 @@ it('will render a suitable action array', function () {
     expect($actionArray['parameters']['relatedProjectIds'])->toBe(1);
     expect($actionArray['parameters']['addMobileUrl'])->toBe(true);
     expect($actionArray['parameters']['data'])->toMatchArray(['Eintragsdatum', 'modified']);
+});
+
+it('will send a successful request', function () {
+    $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
+    $request = new OnOfficeApiRequest();
+    $request->addAction(
+        Action::read()
+            ->task()
+            ->fieldsToRead('Eintragsdatum', 'modified')
+            ->setRelatedEstateId(2)
+            ->setRelatedProjectId(1)
+            ->setListLimit(200)
+    );
+
+    $response = $api->send($request);
+    expect($response->status())->toBe(200);
 });

@@ -2,10 +2,9 @@
 
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
 
 it('can be retrieved from Action base class', function () {
-    $instance = Action::read(ReadResource::Estate);
+    $instance = Action::read()->estate();
     expect($instance::class)->toBe(ReadEstateAction::class);
 });
 

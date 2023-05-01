@@ -7,6 +7,8 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    protected $loadEnvironmentVariables = true;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -22,6 +24,8 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('onoffice.token', env('TOKEN'));
+        config()->set('onoffice.secret', env('SECRET'));
 
         /*
         $migration = include __DIR__.'/../database/migrations/create_onoffice-laravel-adapter_table.php.stub';

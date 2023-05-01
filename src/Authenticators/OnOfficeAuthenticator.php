@@ -35,7 +35,7 @@ class OnOfficeAuthenticator implements Authenticator
 
     private function buildAll(mixed $body): mixed
     {
-        foreach ($body['request']['actions'] as $action) {
+        foreach ($body['request']['actions'] as &$action) {
             $action = $this->build(
                 $action['actionid'],
                 $action['resourceid'],
@@ -51,7 +51,7 @@ class OnOfficeAuthenticator implements Authenticator
     {
         $timestamp = time();
 
-        $action = [
+        return [
             'actionid' => $actionId,
             'resourceid' => $resourceId,
             'identifier' => '',
@@ -62,14 +62,6 @@ class OnOfficeAuthenticator implements Authenticator
             'hmac_version' => '2',
         ];
 
-        return [
-            'token' => $this->token,
-            'request' => [
-                'actions' => [
-                    $action,
-                ],
-            ],
-        ];
     }
 
     private function createHmac2($timestamp, $type, $actionId)

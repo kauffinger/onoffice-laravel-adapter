@@ -85,7 +85,7 @@ class ReadTaskAction implements ActionInterface
         return [
             'actionid' => ActionType::Read->value,
             'resourceid' => $this->resourceId ?? '',
-            'resourcetype' => ReadResource::Task,
+            'resourcetype' => ReadResource::Task->value,
             'parameters' => $parameters,
         ];
     }

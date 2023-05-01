@@ -82,7 +82,7 @@ class ReadEstateAction implements ActionInterface
         return [
             'actionid' => ActionType::Read->value,
             'resourceid' => $this->resourceId ?? '',
-            'resourcetype' => ReadResource::Estate,
+            'resourcetype' => ReadResource::Estate->value,
             'parameters' => $parameters,
         ];
     }
