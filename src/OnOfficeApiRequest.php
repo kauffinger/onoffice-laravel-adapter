@@ -2,14 +2,18 @@
 
 namespace Kauffinger\OnOfficeApi;
 
+use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Saloon\Contracts\Body\HasBody;
+use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 class OnOfficeApiRequest extends Request implements HasBody
 {
     use HasJsonBody;
+
+    protected Method $method = Method::POST;
 
     public function __construct(private ActionType $action)
     {
@@ -20,8 +24,8 @@ class OnOfficeApiRequest extends Request implements HasBody
         return '';
     }
 
-    public function resolveMethod(): string
+    public function addAction(ActionInterface $action): void
     {
-        return 'POST';
+        $this->body->add('request', $action->render());
     }
 }

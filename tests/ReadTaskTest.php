@@ -19,10 +19,10 @@ it('will render a suitable action array', function () {
         ->setListLimit(200)
         ->render();
 
-    expect($actionArray)->toHaveKeys(['addMobileUrl', 'data', 'relatedEstateId', 'relatedProjectIds', 'listlimit']);
-    expect($actionArray['listlimit'])->toBe(200);
-    expect($actionArray['relatedEstateId'])->toBe(2);
-    expect($actionArray['relatedProjectIds'])->toBe(1);
-    expect($actionArray['addMobileUrl'])->toBe(true);
-    expect($actionArray['data'])->toMatchArray(['Eintragsdatum', 'modified']);
+    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data', 'relatedEstateId', 'relatedProjectIds', 'listlimit']);
+    expect($actionArray['parameters']['listlimit'])->toBe(200);
+    expect($actionArray['parameters']['relatedEstateId'])->toBe(2);
+    expect($actionArray['parameters']['relatedProjectIds'])->toBe(1);
+    expect($actionArray['parameters']['addMobileUrl'])->toBe(true);
+    expect($actionArray['parameters']['data'])->toMatchArray(['Eintragsdatum', 'modified']);
 });

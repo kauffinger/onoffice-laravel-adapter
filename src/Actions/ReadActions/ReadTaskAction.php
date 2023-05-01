@@ -9,6 +9,9 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedAddressId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedEstateId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRelatedProjectId;
+use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
+use Kauffinger\OnOfficeApi\Enums\ActionType;
+use Kauffinger\OnOfficeApi\Enums\ReadResource;
 
 class ReadTaskAction implements ActionInterface
 {
@@ -18,6 +21,7 @@ class ReadTaskAction implements ActionInterface
     use HasRelatedAddressId;
     use HasRelatedEstateId;
     use HasRelatedProjectId;
+    use HasResourceId;
 
     private ?bool $responsibilityByGroup;
 
@@ -66,7 +70,7 @@ class ReadTaskAction implements ActionInterface
 
     public function render(): array
     {
-        return collect($this->actionArray)
+        $parameters = collect($this->actionArray)
             ->putIfNotNull('filter', $this->filter ?? null)
             ->putIfNotNull('listlimit', $this->listLimit ?? null)
             ->putIfNotNull('listoffset', $this->listOffset ?? null)
@@ -77,5 +81,12 @@ class ReadTaskAction implements ActionInterface
             ->putIfNotNull('responsibilityByGroup', $this->responsibilityByGroup ?? null)
             ->putIfNotNull('addMobileUrl', $this->addMobileUrl ?? null)
             ->toArray();
+
+        return [
+            'actionid' => ActionType::Read->value,
+            'resourceid' => $this->resourceId ?? '',
+            'resourcetype' => ReadResource::Task,
+            'parameters' => $parameters,
+        ];
     }
 }

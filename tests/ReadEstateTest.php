@@ -16,6 +16,6 @@ it('will render a suitable action array', function () {
         ->setData(['testfield', 'testfield2'])
         ->render();
 
-    expect($actionArray)->toHaveKeys(['addMobileUrl', 'data']);
-    expect($actionArray['data'])->toMatchArray(['testfield', 'testfield2']);
+    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data']);
+    expect($actionArray['parameters']['data'])->toMatchArray(['testfield', 'testfield2']);
 });

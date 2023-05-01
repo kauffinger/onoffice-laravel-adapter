@@ -10,6 +10,9 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasGeoRangeSearch;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMobileUrl;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMultiLanguageEstates;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
+use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
+use Kauffinger\OnOfficeApi\Enums\ActionType;
+use Kauffinger\OnOfficeApi\Enums\ReadResource;
 
 class ReadEstateAction implements ActionInterface
 {
@@ -20,6 +23,7 @@ class ReadEstateAction implements ActionInterface
     use HasMultiLanguageEstates;
     use HasGeoRangeSearch;
     use HasMobileUrl;
+    use HasResourceId;
 
     public function __construct(
         private array $actionArray = [],
@@ -60,7 +64,7 @@ class ReadEstateAction implements ActionInterface
 
     public function render(): array
     {
-        return collect($this->actionArray)
+        $parameters = collect($this->actionArray)
             ->putIfNotNull('filterId', $this->filterId ?? null)
             ->putIfNotNull('filter', $this->filter ?? null)
             ->putIfNotNull('listlimit', $this->listLimit ?? null)
@@ -74,5 +78,12 @@ class ReadEstateAction implements ActionInterface
             ->putIfNotNull('georangesearch', $this->geoRangeSearch ?? null)
             ->putIfNotNull('addMobileUrl', $this->addMobileUrl ?? null)
             ->toArray();
+
+        return [
+            'actionid' => ActionType::Read->value,
+            'resourceid' => $this->resourceId ?? '',
+            'resourcetype' => ReadResource::Estate,
+            'parameters' => $parameters,
+        ];
     }
 }
