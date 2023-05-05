@@ -9,6 +9,7 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasFormattableOutput;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasGeoRangeSearch;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMobileUrl;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasMultiLanguageEstates;
+use Kauffinger\OnOfficeApi\Actions\Traits\HasOutputLanguage;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
@@ -21,6 +22,7 @@ class ReadEstateAction implements ActionInterface
     use HasPagination;
     use HasFormattableOutput;
     use HasMultiLanguageEstates;
+    use HasOutputLanguage;
     use HasGeoRangeSearch;
     use HasMobileUrl;
     use HasResourceId;
