@@ -41,5 +41,5 @@ it('will send a successful request', function () {
     );
 
     $response = $api->send($request);
-    expect($response->status())->toBe(200);
+    expect($response->collect()->get('status')['code'])->toBe(200);
 });
