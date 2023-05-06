@@ -6,6 +6,7 @@ use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAddressAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAppointmentAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
 
 class ReadAction
 {
@@ -27,5 +28,10 @@ class ReadAction
     public function appointment(): ReadAppointmentAction
     {
         return new ReadAppointmentAction();
+    }
+
+    public function user(): ReadUserAction
+    {
+        return new ReadUserAction();
     }
 }

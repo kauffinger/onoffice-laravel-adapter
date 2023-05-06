@@ -3,6 +3,7 @@
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAddressAction;
 use Kauffinger\OnOfficeApi\Enums\Language;
+use Kauffinger\OnOfficeApi\Enums\SortOrder;
 use Kauffinger\OnOfficeApi\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
 
@@ -38,6 +39,8 @@ it('will send a successful request', function () {
             ->outputInLanguage(Language::German)
             ->addMobileUrl()
             ->fieldsToRead('phone', 'mobile')
+            // This could be broken, or api docs are inaccurate.
+            ->addSortBy('phone', SortOrder::Ascending)
             ->setListLimit(200)
     );
 

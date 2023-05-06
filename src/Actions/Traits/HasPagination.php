@@ -31,14 +31,12 @@ trait HasPagination
      * One of the fields that you query in the data parameter.
      * @param  SortOrder  $order
      * Either Ascending or Descending.
-     * @return void
      */
     public function addSortBy(string $field, SortOrder $order)
     {
         $this->sortBy = [
             ...$this->sortBy ?? [],
-            'field' => $field,
-            'order' => $order->value,
+            $field => $order->value,
         ];
 
         return $this;
