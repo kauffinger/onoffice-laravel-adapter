@@ -4,6 +4,7 @@ namespace Kauffinger\OnOfficeApi\Actions;
 
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAddressAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAppointmentAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadBasicSettingAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
@@ -39,5 +40,10 @@ class ReadAction
     public function userPhoto(): ReadUserPhotoAction
     {
         return new ReadUserPhotoAction();
+    }
+
+    public function basicSetting(): ReadBasicSettingAction
+    {
+        return new ReadBasicSettingAction();
     }
 }
