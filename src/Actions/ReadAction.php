@@ -7,6 +7,7 @@ use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAppointmentAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserPhotoAction;
 
 class ReadAction
 {
@@ -33,5 +34,10 @@ class ReadAction
     public function user(): ReadUserAction
     {
         return new ReadUserAction();
+    }
+
+    public function userPhoto(): ReadUserPhotoAction
+    {
+        return new ReadUserPhotoAction();
     }
 }
