@@ -24,6 +24,7 @@ class OnOfficeApiServiceProvider extends PackageServiceProvider
     {
         Collection::macro('putIfNotNull', function ($key, $value) {
             if ($value != null) {
+                /** @phpstan-ignore-next-line */
                 $this->put($key, $value);
             }
 
