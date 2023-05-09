@@ -3,6 +3,7 @@
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
 use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Kauffinger\OnOfficeApi\Enums\Language;
 use Kauffinger\OnOfficeApi\Enums\ReadResource;
@@ -13,6 +14,8 @@ use Kauffinger\OnOfficeApi\Enums\ReadResource;
  */
 class ReadImprintAction implements ActionInterface
 {
+    use HasResourceId;
+
     public function __construct(
         private array $actionArray = [],
     ) {
