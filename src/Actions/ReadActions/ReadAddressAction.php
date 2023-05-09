@@ -57,7 +57,7 @@ class ReadAddressAction implements ActionInterface
     }
 
     /**
-     * @param  array<string>  $data
+     * @param  string[]  $data
      * `ARRAY of fields that you want to read.` *All fields specified in the enterprise administration are valid here.*
      * *Example:*
      * ```php
@@ -72,7 +72,7 @@ class ReadAddressAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $fields
+     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self

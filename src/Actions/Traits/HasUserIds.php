@@ -14,7 +14,6 @@ trait HasUserIds
     /**
      * User IDs. Specify here the appointments of which users you want to read out. Works only in combination with the parameters datestart and dateend.
      *
-     * @param  int[]  $userIds
      *
      * @throws InvalidArgumentException
      */

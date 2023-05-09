@@ -31,7 +31,7 @@ class ReadUserAction implements ActionInterface
     }
 
     /**
-     * @param  array<string>  $data
+     * @param  string[]  $data
      * Following fields can be queried: Anrede, Titel, Kuerzel, Vorname, Nachname, Firma, PLZ, Ort, Strasse, Hausnummer, Land, province, Mobil, Telefon, Fax, Url, UstID, taxNumber, Gerichtsstand, imprintFurthermore (Weiteres), Firmazusatz1, PositionUnternehmen, Namezusatz1, Namezusatz2, Bank, IBAN, BIC, Finanzamt, Hinweis, Sonstiges, Nr, Name (user name), email, Emailname, adrId:adressen.ID (linked user address), anbieter, Prefix, usesAccount:account.id (Account approved or blocked), Sprache, meetingUrl (user link for video conference), online (status of a user: active, permanently deactivated, locked, etc.)
      */
     public function setData(array $data): self
@@ -42,7 +42,7 @@ class ReadUserAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $fields
+     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self

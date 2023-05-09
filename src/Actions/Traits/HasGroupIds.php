@@ -14,8 +14,6 @@ trait HasGroupIds
     /**
      * group IDs. Specify here the appointments of which groups you want to read out. Works only in combination with the parameters datestart and dateend.
      *
-     * @param  int[]  $groupIds
-     *
      * @throws InvalidArgumentException
      */
     public function groupIds(int ...$groupIds)

@@ -61,7 +61,7 @@ class ReadUserRightAction implements ActionInterface
         return [
             'actionid' => ActionType::Read->value,
             'resourceid' => '',
-            'resourcetype' => ReadResource::Estate->value,
+            'resourcetype' => ReadResource::UserRights->value,
             'parameters' => $parameters,
         ];
     }

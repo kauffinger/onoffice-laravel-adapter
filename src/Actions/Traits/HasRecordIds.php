@@ -19,9 +19,6 @@ trait HasRecordIds
         return $this;
     }
 
-    /**
-     * @param  int[]  $recordId
-     */
     public function addRecordIds(int ...$recordId)
     {
         $this->recordIds = [...$this->recordIds ?? [], ...$recordId];

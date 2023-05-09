@@ -23,12 +23,23 @@ class ReadImprintAction implements ActionInterface
     }
 
     /**
-     * @param  array<string>  $data
+     * @param  string[]  $data
      * The fields you want to query. If data is not set, all fields will be returned. The following fields can be queried: title, firstname, lastname, firma, postcode, city, street, housenumber, state, country, phone, mobil, fax, email, homepage, vertretungsberechtigter, berufsaufsichtsbehoerde, handelsregister, handelsregisterNr, ustId, bank, iban, bic, chamber.
      */
     public function setData(array $data): self
     {
         $this->actionArray['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * @param  string  ...$fields
+     * Alternative way to set data, see setData()
+     */
+    public function fieldsToRead(string ...$fields): self
+    {
+        $this->actionArray['data'] = [...$fields];
 
         return $this;
     }
@@ -49,17 +60,6 @@ class ReadImprintAction implements ActionInterface
     public function formatOutput(): self
     {
         $this->actionArray['formatoutput'] = true;
-
-        return $this;
-    }
-
-    /**
-     * @param  string[]  $fields
-     * Alternative way to set data, see setData()
-     */
-    public function fieldsToRead(string ...$fields): self
-    {
-        $this->actionArray['data'] = [...$fields];
 
         return $this;
     }

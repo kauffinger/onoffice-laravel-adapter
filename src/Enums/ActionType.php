@@ -10,7 +10,6 @@ enum ActionType: string
     case Edit = 'urn:onoffice-de-ns:smart:2.5:smartml:action:modify';
     case Do = 'urn:onoffice-de-ns:smart:2.5:smartml:action:do';
 
-    /** @return array<Kauffinger\OnOfficeApi\Enums\ResourceEnum>  */
     public function getAvailableResourceTypes(): array
     {
         return match ($this) {

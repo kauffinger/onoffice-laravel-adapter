@@ -12,7 +12,6 @@ trait HasFilter
      * @param  string|int|array  $value
      * For some params, this can be an array of values.
      * When using like, you can use `%` as a wildcard.
-     * @return void
      */
     public function addFilter(string $operator, string|int|array $value)
     {
@@ -38,7 +37,6 @@ trait HasFilter
      *
      * @param  array  $filter
      * The whole filter array, including all filters.
-     * @return void
      */
     public function setFilter(array $filter)
     {

@@ -43,7 +43,7 @@ class ReadTaskAction implements ActionInterface
     }
 
     /**
-     * @param  array<string>  $data
+     * @param  string[]  $data
      * `ARRAY of fields that you want to read.`
      * *List of available fields:*
      * ```
@@ -58,7 +58,7 @@ class ReadTaskAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $fields
+     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self
