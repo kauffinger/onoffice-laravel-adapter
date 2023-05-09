@@ -10,6 +10,7 @@ use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadImprintAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserPhotoAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserRightAction;
 
 class ReadAction
 {
@@ -51,5 +52,10 @@ class ReadAction
     public function imprint(): ReadImprintAction
     {
         return new ReadImprintAction();
+    }
+
+    public function userRight(): ReadUserRightAction
+    {
+        return new ReadUserRightAction();
     }
 }
