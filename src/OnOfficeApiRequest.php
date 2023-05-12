@@ -30,14 +30,18 @@ class OnOfficeApiRequest extends Request implements HasBody
         return [];
     }
 
-    public function addAction(ActionInterface $action): void
+    public function addAction(ActionInterface $action): OnOfficeApiRequest
     {
+        $currentBody = $this->body->all();
         $this->body->add(
             'request',
             [
                 'actions' => [
+                    ...$currentBody['request']['actions'] ?? [],
                     $action->render(),
                 ],
             ]);
+
+        return $this;
     }
 }
