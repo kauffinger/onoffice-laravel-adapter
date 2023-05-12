@@ -37,8 +37,8 @@ class OnOfficeApi extends Connector
         return new OnOfficeAuthenticator($this->token, $this->secret);
     }
 
-    public static function request(): OnOfficeApiRequest
+    public static function for(string $token, string $secret)
     {
-        return new OnOfficeApiRequest();
+        return new OnOfficeApi($token, $secret);
     }
 }

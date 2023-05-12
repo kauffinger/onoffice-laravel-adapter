@@ -29,9 +29,7 @@ it('will render a suitable action array', function () {
 });
 
 it('will send a successful request', function () {
-    $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
-    $request = new OnOfficeApiRequest();
-    $request->addAction(
+    $request = OnOfficeApiRequest::with(
         Action::read()
             ->task()
             ->fieldsToRead('Eintragsdatum', 'modified')
@@ -40,6 +38,10 @@ it('will send a successful request', function () {
             ->setListLimit(200)
     );
 
-    $response = $api->send($request);
+    $response = OnOfficeApi::for(
+        config('onoffice.token'), config('onoffice.secret')
+    )
+        ->send($request);
+
     expect($response->collect()->get('status')['code'])->toBe(200);
 });

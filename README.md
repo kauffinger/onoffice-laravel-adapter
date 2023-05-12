@@ -50,6 +50,24 @@ $request->addAction(
 $response = $api->send($request);
 ```
 
+Or, if you like your code even cleaner, how about this:
+
+```php
+$request = OnOfficeApiRequest::with(
+    Action::read()
+        ->task()
+        ->fieldsToRead('Eintragsdatum', 'modified')
+        ->setRelatedEstateId(2)
+        ->setRelatedProjectId(1)
+        ->setListLimit(200)
+);
+
+$response = OnOfficeApi::for(
+    config('onoffice.token'), config('onoffice.secret')
+)
+    ->send($request);
+```
+
 ## Testing
 
 ```bash

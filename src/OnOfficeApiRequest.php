@@ -44,4 +44,9 @@ class OnOfficeApiRequest extends Request implements HasBody
 
         return $this;
     }
+
+    public static function with(ActionInterface $action): OnOfficeApiRequest
+    {
+        return (new OnOfficeApiRequest)->addAction($action);
+    }
 }
