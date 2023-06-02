@@ -2,7 +2,7 @@
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
-enum Module: string
+enum UserRightsModule: string
 {
     case Folder = 'folder';
     case AgentsLog = 'agentslog';

@@ -7,6 +7,7 @@ use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAppointmentAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadBasicSettingAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadImprintAction;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadRecordsLastSeenAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserPhotoAction;
@@ -57,5 +58,10 @@ class ReadAction
     public function userRight(): ReadUserRightAction
     {
         return new ReadUserRightAction();
+    }
+
+    public function recordsLastSeen(): ReadRecordsLastSeenAction
+    {
+        return new ReadRecordsLastSeenAction();
     }
 }

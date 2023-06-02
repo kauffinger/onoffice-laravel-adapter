@@ -5,8 +5,8 @@ namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRecordIds;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\Module;
 use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\UserRightsModule;
 
 /**
  * Read user rights
@@ -35,7 +35,7 @@ class ReadUserRightAction implements ActionInterface
     /**
      * Module
      */
-    public function module(Module $module): self
+    public function module(UserRightsModule $module): self
     {
         $this->actionArray['module'] = $module->value;
 

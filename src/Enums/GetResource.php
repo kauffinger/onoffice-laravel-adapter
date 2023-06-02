@@ -14,7 +14,6 @@ enum GetResource: string
     case AddressCompletionFields = 'addressCompletionFields';
     case SearchCriteria = 'searchcriterias';
     case SearchCriteriaFields = 'searchCriteriaFields';
-    case SearchForSuitableSearchCriteria = 'search';
     case RegionsLiveSearch = 'regionsLiveSearch';
     case TeanantOrBuyerSeeker = 'qualifiedsuitors';
     case SearchForEstates = 'search';

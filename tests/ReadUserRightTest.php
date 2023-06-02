@@ -3,7 +3,7 @@
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserRightAction;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\Module;
+use Kauffinger\OnOfficeApi\Enums\UserRightsModule;
 use Kauffinger\OnOfficeApi\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
 
@@ -16,12 +16,12 @@ it('will render a suitable action array', function () {
     $action = new ReadUserRightAction();
     $actionArray = $action
         ->actionType(ActionType::Read)
-        ->module(Module::Address)
+        ->module(UserRightsModule::Address)
         ->render();
 
     expect($actionArray['parameters'])->toHaveKeys(['action', 'module']);
     expect($actionArray['parameters']['action'])->toBe(ActionType::Read->value);
-    expect($actionArray['parameters']['module'])->toBe(Module::Address->value);
+    expect($actionArray['parameters']['module'])->toBe(UserRightsModule::Address->value);
 });
 
 it('will send a successful request', function () {
@@ -31,7 +31,7 @@ it('will send a successful request', function () {
         Action::read()
             ->userRight()
             ->actionType(ActionType::Read)
-            ->module(Module::Address)
+            ->module(UserRightsModule::Address)
     );
 
     $response = $api->send($request);
