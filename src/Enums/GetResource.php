@@ -16,7 +16,6 @@ enum GetResource: string
     case SearchCriteriaFields = 'searchCriteriaFields';
     case RegionsLiveSearch = 'regionsLiveSearch';
     case TeanantOrBuyerSeeker = 'qualifiedsuitors';
-    case SearchForEstates = 'search';
     case EstateImagesPublishedOnHomepage = 'estatepictures';
     case Region = 'regions';
     case PDF = 'pdf';
