@@ -1,0 +1,88 @@
+<?php
+
+use Kauffinger\OnOfficeApi\Actions\Action;
+use Kauffinger\OnOfficeApi\Actions\EditActions\EditEstateAction;
+use Kauffinger\OnOfficeApi\Enums\EstateStatus;
+use Kauffinger\OnOfficeApi\Enums\Language;
+use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+
+it('can be retrieved from Action base class', function () {
+    $instance = Action::edit()->estate(0);
+    expect($instance::class)->toBe(EditEstateAction::class);
+});
+
+it('will render a suitable action array', function () {
+    $action = new EditEstateAction(0);
+    $actionArray = $action
+        ->update(
+            [
+                'objektart' => 'haus',
+                'nutzungsart' => 'wohnen',
+                'vermarktungsart' => 'kauf',
+                'objekttyp' => 'einfamilienhaus',
+                'plz' => 52068,
+                'ort' => 'Aachen',
+                'land' => 'DEU',
+                'heizungsart' => ['gas', 'fussboden'],
+            ]
+        )
+        ->setStatus(EstateStatus::Pending)
+        ->setSold(false)
+        ->setReserved(true)
+        ->estateLanguage(Language::German)
+        ->render();
+
+    expect($actionArray['resourceid'])->toBe(0);
+
+    expect($actionArray['parameters']['data'])
+        ->toHaveKeys(
+            [
+                'objektart',
+                'objekttyp',
+                'vermarktungsart',
+                'objekttyp',
+                'plz',
+                'ort',
+                'land',
+                'heizungsart',
+                'status',
+                'verkauft',
+                'reserviert',
+            ]
+        );
+
+    expect($actionArray['parameters']['estatelanguage'])
+        ->toBe(
+            Language::German->value
+        );
+
+    expect($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
+});
+
+it('will not allow illegal arguments in update', function () {
+    $invalidKeys = array_fill_keys(EditEstateAction::SPECIAL_FIELDS, 0);
+    (new EditEstateAction(0))
+        ->update($invalidKeys);
+})->throws(InvalidArgumentException::class);
+
+/* it('will send a successful request', function () { */
+/*     $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret')); */
+/*     $request = new OnOfficeApiRequest(); */
+/*     $request->addAction( */
+/*         Action::edit() */
+/*             ->estate(1) */
+/*             ->update( */
+/*                 [ */
+/*                     'Vorname' => 'Peter', */
+/*                     'Name' => 'Lustig', */
+/*                     'Strasse' => 'Hauptst. 2', */
+/*                     'Land' => 'DEU', */
+/*                     'Geburtsdatum' => '2017-01-31 12:00:00', */
+/*                 ] */
+/*             ) */
+/*     ); */
+/**/
+/*     $response = $api->send($request); */
+/*     expect($response->collect()->get('status')['code'])->toBe(200); */
+/* }); */
