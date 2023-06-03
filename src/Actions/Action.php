@@ -8,4 +8,9 @@ class Action
     {
         return new ReadAction();
     }
+
+    public static function edit(): EditAction
+    {
+        return new EditAction();
+    }
 }
