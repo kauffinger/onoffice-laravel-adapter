@@ -7,7 +7,7 @@
 
 This is a package meant to make interacting with the onOffice API enjoyable and easy. We try our best to make all rules from the API as explicit as possible in code. This means you shouldn't be able to create invalid requests.
 
-<img src="banner.png" width="419px" />
+![Banner](banner.png)
 
 ## Installation
 
