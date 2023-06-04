@@ -7,9 +7,7 @@
 
 This is a package meant to make interacting with the onOffice API enjoyable and easy. We try our best to make all rules from the API as explicit as possible in code. This means you shouldn't be able to create invalid requests.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/onoffice-laravel-adapter.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/onoffice-laravel-adapter)
+<img src="banner.png" width="419px" />
 
 ## Installation
 
