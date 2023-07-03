@@ -20,8 +20,7 @@ enum GetResource: string
     case Region = 'regions';
     case PDF = 'pdf';
     case Filter = 'filter';
-    case AddressFile = 'file';
-    case EstateFile = 'file';
+    case File = 'file';
     case Survey = 'appointmentdocument';
     case MacroResolve = 'macroresolve';
     case User = 'users';
