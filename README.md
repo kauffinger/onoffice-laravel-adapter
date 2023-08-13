@@ -67,6 +67,12 @@ $response = OnOfficeApi::for(
     ->send($request);
 ```
 
+## Features
+
+-   Access all onOffice API endpoints in a way that is as typesafe as possible (in progress)
+-   Integrate optional saloon based [caching](https://docs.saloon.dev/official-plugins/caching-responses) of requests (todo)
+-   Add saloon resource classes for the most used basic actions (todo)
+
 ## Testing
 
 ```bash
