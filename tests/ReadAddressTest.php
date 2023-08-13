@@ -6,6 +6,8 @@ use Kauffinger\OnOfficeApi\Enums\Language;
 use Kauffinger\OnOfficeApi\Enums\SortOrder;
 use Kauffinger\OnOfficeApi\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockClient;
+use Saloon\Http\Faking\MockResponse;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::read()->address();
@@ -30,7 +32,11 @@ it('will render a suitable action array', function () {
 });
 
 it('will send a successful request', function () {
+    $mockClient = new MockClient([
+        OnOfficeApiRequest::class => MockResponse::fixture('read/ReadAddressAction'),
+    ]);
     $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
+    $api->withMockClient($mockClient);
     $request = new OnOfficeApiRequest();
     $request->addAction(
         Action::read()
@@ -41,9 +47,9 @@ it('will send a successful request', function () {
             ->fieldsToRead('phone', 'mobile')
             // This could be broken, or api docs are inaccurate.
             ->addSortBy('phone', SortOrder::Ascending)
-            ->setListLimit(200)
+            ->setListLimit(2)
     );
 
     $response = $api->send($request);
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    expect($response->collect()->get('response')['results'][0]['status']['errorcode'])->toBe(0);
 });

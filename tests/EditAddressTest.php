@@ -5,6 +5,8 @@ use Kauffinger\OnOfficeApi\Actions\EditActions\EditAddressAction;
 use Kauffinger\OnOfficeApi\Enums\SpecialAddressField;
 use Kauffinger\OnOfficeApi\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockClient;
+use Saloon\Http\Faking\MockResponse;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::edit()->address(0);
@@ -79,11 +81,15 @@ it('will not allow illegal arguments in update', function () {
 })->throws(InvalidArgumentException::class);
 
 it('will send a successful request', function () {
+    $mockClient = new MockClient([
+        OnOfficeApiRequest::class => MockResponse::fixture('edit/EditAddressAction'),
+    ]);
     $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
+    $api->withMockClient($mockClient);
     $request = new OnOfficeApiRequest();
     $request->addAction(
         Action::edit()
-            ->address(1)
+            ->address(4545)
             ->update(
                 [
                     'Vorname' => 'Peter',
@@ -96,5 +102,5 @@ it('will send a successful request', function () {
     );
 
     $response = $api->send($request);
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    expect($response->collect()->get('response')['results'][0]['status']['errorcode'])->toBe(0);
 });
