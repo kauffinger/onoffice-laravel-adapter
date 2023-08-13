@@ -45,7 +45,7 @@ trait HasFilter
         return $this;
     }
 
-    public function getFilter(): array|null
+    public function getFilter(): ?array
     {
         return $this->filter;
     }

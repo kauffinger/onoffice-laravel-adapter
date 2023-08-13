@@ -13,7 +13,7 @@ trait HasFilterId
         return $this;
     }
 
-    public function getFilterId(): int|null
+    public function getFilterId(): ?int
     {
         return $this->filterId;
     }
