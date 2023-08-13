@@ -6,6 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/kauffinger/onoffice-laravel-adapter.svg?style=flat-square)](https://packagist.org/packages/kauffinger/onoffice-laravel-adapter)
 
 This is a package meant to make interacting with the onOffice API enjoyable and easy. We try our best to make all rules from the API as explicit as possible in code. This means you shouldn't be able to create invalid requests.
+It is based on the [official php sdk](https://github.com/onOfficeGmbH/sdk) and [saloon](https://github.com/saloonphp/saloon).
 
 ![Banner](banner.png)
 
