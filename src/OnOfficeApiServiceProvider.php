@@ -8,6 +8,13 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class OnOfficeApiServiceProvider extends PackageServiceProvider
 {
+    public function register()
+    {
+        $this->app->bind(OnOfficeApi::class, function (): OnOfficeApi {
+            return new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
+        });
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
