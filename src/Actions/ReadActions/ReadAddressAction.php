@@ -31,11 +31,11 @@ class ReadAddressAction implements ActionInterface
 {
     use HasFilter;
     use HasFilterId;
-    use HasRecordIds;
-    use HasPagination;
     use HasFormattableOutput;
-    use HasOutputLanguage;
     use HasMobileUrl;
+    use HasOutputLanguage;
+    use HasPagination;
+    use HasRecordIds;
     use HasResourceId;
 
     private ?CountryIsoCodeType $countryIsoCodeType = null;

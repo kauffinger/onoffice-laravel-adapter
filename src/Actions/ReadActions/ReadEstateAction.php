@@ -19,12 +19,12 @@ class ReadEstateAction implements ActionInterface
 {
     use HasFilter;
     use HasFilterId;
-    use HasPagination;
     use HasFormattableOutput;
-    use HasMultiLanguageEstates;
-    use HasOutputLanguage;
     use HasGeoRangeSearch;
     use HasMobileUrl;
+    use HasMultiLanguageEstates;
+    use HasOutputLanguage;
+    use HasPagination;
     use HasResourceId;
 
     public function __construct(

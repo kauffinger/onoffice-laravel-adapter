@@ -16,8 +16,8 @@ use Kauffinger\OnOfficeApi\Enums\ReadResource;
 class ReadTaskAction implements ActionInterface
 {
     use HasFilter;
-    use HasPagination;
     use HasMobileUrl;
+    use HasPagination;
     use HasRelatedAddressId;
     use HasRelatedEstateId;
     use HasRelatedProjectId;

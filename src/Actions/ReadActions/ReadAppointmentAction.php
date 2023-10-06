@@ -22,13 +22,13 @@ use Kauffinger\OnOfficeApi\Enums\ReadResource;
  */
 class ReadAppointmentAction implements ActionInterface
 {
-    use HasFilter;
     use HasDateRange;
-    use HasLastModificationFilter;
-    use HasUserIds;
+    use HasFilter;
     use HasGroupIds;
+    use HasLastModificationFilter;
     use HasRecordIds;
     use HasResourceId;
+    use HasUserIds;
 
     private ?bool $showCancelled = null;
 
