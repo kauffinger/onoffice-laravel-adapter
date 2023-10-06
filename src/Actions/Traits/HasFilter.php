@@ -7,8 +7,8 @@ trait HasFilter
     private ?array $filter = [];
 
     /**
-     * @param  string  $operator
      * Must be one of the following: `is` or `=`, `>`, `<`, `>=`, `<=`, `!=` or `<>`, `between`, `like`, `not like`, `in`, `not in`
+     *
      * @param  string|int|array  $value
      * For some params, this can be an array of values.
      * When using like, you can use `%` as a wildcard.
@@ -35,7 +35,6 @@ trait HasFilter
     /**
      * This method can be used to overwrite the filter using a whole array. Usually, you should use addFilter() instead.
      *
-     * @param  array  $filter
      * The whole filter array, including all filters.
      */
     public function setFilter(array $filter)

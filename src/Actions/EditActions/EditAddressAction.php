@@ -13,7 +13,7 @@ use Kauffinger\OnOfficeApi\Enums\SpecialAddressField;
 class EditAddressAction implements ActionInterface
 {
     public function __construct(
-        private int $resourceId,
+        private readonly int $resourceId,
         private array $actionArray = [],
     ) {
 
@@ -25,7 +25,7 @@ class EditAddressAction implements ActionInterface
     public function update(array $map): self
     {
         $invalidFields = array_intersect(SpecialAddressField::getAllCases(), array_keys($map));
-        if (! empty($invalidFields)) {
+        if ($invalidFields !== []) {
             $invalidFieldString = implode(',', $invalidFields);
             throw new \InvalidArgumentException(
                 "Special fields '$invalidFieldString' must be changed using the `add`, `modify`, and `delete` methods."

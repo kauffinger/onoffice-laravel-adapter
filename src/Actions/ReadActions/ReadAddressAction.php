@@ -38,7 +38,7 @@ class ReadAddressAction implements ActionInterface
     use HasMobileUrl;
     use HasResourceId;
 
-    private ?CountryIsoCodeType $countryIsoCodeType;
+    private ?CountryIsoCodeType $countryIsoCodeType = null;
 
     public function __construct(
         private array $actionArray = [],
@@ -72,7 +72,6 @@ class ReadAddressAction implements ActionInterface
     }
 
     /**
-     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self

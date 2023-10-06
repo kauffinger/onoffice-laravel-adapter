@@ -12,7 +12,7 @@ use Kauffinger\OnOfficeApi\Enums\ReadResource;
 class ReadBasicSettingAction implements ActionInterface
 {
     public function __construct(
-        private array $actionArray = [
+        private readonly array $actionArray = [
             'data' => [
                 'basicData' => [
                     'logo',

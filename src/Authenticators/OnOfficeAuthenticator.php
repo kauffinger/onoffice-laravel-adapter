@@ -8,8 +8,8 @@ use Saloon\Contracts\PendingRequest;
 class OnOfficeAuthenticator implements Authenticator
 {
     public function __construct(
-        private string $token,
-        private string $secret,
+        private readonly string $token,
+        private readonly string $secret,
     ) {
     }
 

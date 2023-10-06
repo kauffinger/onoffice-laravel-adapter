@@ -27,13 +27,12 @@ class ReadUserPhotoAction implements ActionInterface
     private array $messengerUserIds;
 
     public function __construct(
-        private array $actionArray = [],
+        private readonly array $actionArray = [],
     ) {
 
     }
 
     /**
-     * @param  int  ...$userIds
      * Array of messenger user IDs. Another way to retrieve user pictures is via the parameter messengerUIDs. For the messenger, it is easier to retrieve user pictures using the users’ messenger ID.
      * The messenger UIDs correspond to users. The messenger UIDs can be read with the calls messenger chatroom participants and messenger user list. The pictures requested with the messengerUIds parameter ignore the filter parameter.
      * When queried via messengerUIds, the response also contains the parameter messengerUIds to establish the mapping between user IDs and messengerUIds. If the messengerUIds array is empty, the messengerUIds for all users will still be output in the response.

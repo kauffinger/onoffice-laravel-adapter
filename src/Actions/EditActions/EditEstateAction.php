@@ -13,10 +13,10 @@ use Kauffinger\OnOfficeApi\Enums\Language;
  */
 class EditEstateAction implements ActionInterface
 {
-    const SPECIAL_FIELDS = ['verkauft', 'reserviert', 'status'];
+    final public const SPECIAL_FIELDS = ['verkauft', 'reserviert', 'status'];
 
     public function __construct(
-        private int $resourceId,
+        private readonly int $resourceId,
         private array $actionArray = [],
     ) {
 
@@ -28,7 +28,7 @@ class EditEstateAction implements ActionInterface
     public function update(array $data): self
     {
         $invalidFields = array_intersect(self::SPECIAL_FIELDS, array_keys($data));
-        if (! empty($invalidFields)) {
+        if ($invalidFields !== []) {
             $invalidFieldString = implode(',', $invalidFields);
             throw new \InvalidArgumentException(
                 "Special fields '$invalidFieldString' must be changed using the `add`, `modify`, and `delete` methods."
@@ -63,7 +63,6 @@ class EditEstateAction implements ActionInterface
     }
 
     /**
-     * @param  Language  $estateLanguage
      * Language of the object, only relevant for multi-language estates. Specified in ISO format with 3 characters, e.g. DEU, ENG. You cannot query properties in a different language without specifying this parameter. Only the ID is not sufficient! You can only query directly via ID if the property is in the main language.
      */
     public function estateLanguage(Language $estateLanguage)

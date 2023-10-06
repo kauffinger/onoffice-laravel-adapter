@@ -9,8 +9,8 @@ use Saloon\Http\Connector;
 class OnOfficeApi extends Connector
 {
     public function __construct(
-        private string $token,
-        private string $secret,
+        private readonly string $token,
+        private readonly string $secret,
     ) {
     }
 

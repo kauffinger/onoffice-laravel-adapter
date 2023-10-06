@@ -54,7 +54,6 @@ class ReadEstateAction implements ActionInterface
     }
 
     /**
-     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self

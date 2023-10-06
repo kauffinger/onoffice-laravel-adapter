@@ -10,9 +10,7 @@ class OnOfficeApiServiceProvider extends PackageServiceProvider
 {
     public function register()
     {
-        $this->app->bind(OnOfficeApi::class, function (): OnOfficeApi {
-            return new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
-        });
+        $this->app->bind(OnOfficeApi::class, fn (): OnOfficeApi => new OnOfficeApi(config('onoffice.token'), config('onoffice.secret')));
     }
 
     public function configurePackage(Package $package): void

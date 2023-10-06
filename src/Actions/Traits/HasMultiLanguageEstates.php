@@ -15,7 +15,6 @@ trait HasMultiLanguageEstates
     private ?string $outputLanguage;
 
     /**
-     * @param  Language  $estateLanguage
      * Language of the object, only relevant for multi-language estates. Specified in ISO format with 3 characters, e.g. DEU, ENG. You cannot query properties in a different language without specifying this parameter. Only the ID is not sufficient! You can only query directly via ID if the property is in the main language.
      */
     public function estateLanguage(Language $estateLanguage)

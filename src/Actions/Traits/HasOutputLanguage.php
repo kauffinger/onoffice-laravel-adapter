@@ -10,7 +10,6 @@ trait HasOutputLanguage
     private ?string $outputLanguage;
 
     /**
-     * @param  Language  $outputLanguage
      * Output language. E.g. the contents of the single- and multi-select fields are output in the specified language. Parameter formatoutput must be set to true.
      */
     public function outputInLanguage(Language $outputLanguage)

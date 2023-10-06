@@ -23,7 +23,7 @@ class ReadTaskAction implements ActionInterface
     use HasRelatedProjectId;
     use HasResourceId;
 
-    private ?bool $responsibilityByGroup;
+    private ?bool $responsibilityByGroup = null;
 
     public function __construct(
         private array $actionArray = [],
@@ -58,7 +58,6 @@ class ReadTaskAction implements ActionInterface
     }
 
     /**
-     * @param  string  ...$fields
      * Alternative way to set data, see setData()
      */
     public function fieldsToRead(string ...$fields): self

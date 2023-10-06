@@ -12,7 +12,7 @@ use Kauffinger\OnOfficeApi\Enums\EditResource;
  */
 class EditFileAction implements ActionInterface
 {
-    const KIND_FIELDS = [
+    final public const KIND_FIELDS = [
         'Foto',
         'Grundriss',
         'Lageplan',

@@ -30,12 +30,12 @@ class ReadAppointmentAction implements ActionInterface
     use HasRecordIds;
     use HasResourceId;
 
-    private ?bool $showCancelled;
+    private ?bool $showCancelled = null;
 
-    private ?bool $allUsers;
+    private ?bool $allUsers = null;
 
     public function __construct(
-        private array $actionArray = [],
+        private readonly array $actionArray = [],
     ) {
 
     }

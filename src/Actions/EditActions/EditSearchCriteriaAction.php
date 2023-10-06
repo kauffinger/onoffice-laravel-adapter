@@ -12,10 +12,10 @@ use Kauffinger\OnOfficeApi\Enums\EditResource;
  */
 class EditSearchCriteriaAction implements ActionInterface
 {
-    const SPECIAL_FIELDS = ['advisor', 'sys_expirydate'];
+    final public const SPECIAL_FIELDS = ['advisor', 'sys_expirydate'];
 
     public function __construct(
-        private int $resourceId,
+        private readonly int $resourceId,
         private array $actionArray = [],
     ) {
 
@@ -27,7 +27,7 @@ class EditSearchCriteriaAction implements ActionInterface
     public function update(array $data): self
     {
         $invalidFields = array_intersect(self::SPECIAL_FIELDS, array_keys($data));
-        if (! empty($invalidFields)) {
+        if ($invalidFields !== []) {
             $invalidFieldString = implode(',', $invalidFields);
             throw new \InvalidArgumentException(
                 "Special fields '$invalidFieldString' must be changed using the `add`, `modify`, and `delete` methods."

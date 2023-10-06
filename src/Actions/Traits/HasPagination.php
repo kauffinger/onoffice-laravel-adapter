@@ -27,9 +27,7 @@ trait HasPagination
     }
 
     /**
-     * @param  string  $field
      * One of the fields that you query in the data parameter.
-     * @param  SortOrder  $order
      * Either Ascending or Descending.
      */
     public function addSortBy(string $field, SortOrder $order)
