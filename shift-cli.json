@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        "anonymous-migrations",
+        "class-strings",
+        "debug-calls",
+        "declare-strict",
+        "explicit-orderby",
+        "facade-aliases",
+        "faker-methods",
+        "model-table",
+        "rules-arrays"
+    ],
+    "ignore": []
+}
