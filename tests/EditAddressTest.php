@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditAddressAction;
 use Kauffinger\OnOfficeApi\Enums\SpecialAddressField;

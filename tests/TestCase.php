@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kauffinger\OnOfficeApi\Tests;
 
 use Kauffinger\OnOfficeApi\OnOfficeApiServiceProvider;

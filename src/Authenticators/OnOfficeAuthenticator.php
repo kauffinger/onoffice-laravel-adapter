@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kauffinger\OnOfficeApi\Authenticators;
 
 use Saloon\Contracts\Authenticator;

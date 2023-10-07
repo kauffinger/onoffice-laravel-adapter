@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kauffinger\OnOfficeApi;
 
 use Kauffinger\OnOfficeApi\Actions\ActionInterface;
