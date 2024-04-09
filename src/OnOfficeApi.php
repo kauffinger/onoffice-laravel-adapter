@@ -18,7 +18,7 @@ class OnOfficeApi extends Connector
 
     public function resolveBaseUrl(): string
     {
-        return config('onoffice.base_url');
+        return config('onoffice.base_url') ?? 'https://api.onoffice.de/api/stable/api.php';
     }
 
     /**
