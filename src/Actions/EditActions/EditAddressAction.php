@@ -22,7 +22,7 @@ class EditAddressAction implements ActionInterface
     }
 
     /**
-     * @param  array<string, string>  $map Keys of fields to change and values they should be changed to. `Land` must be ISO 3166-1 alpha-3. To change the contact data of an address record (telephone, fax, email) additional parameters are necessary and are supported through the `add`, `modify`, and `delete` methods.
+     * @param  array<string, string>  $map  Keys of fields to change and values they should be changed to. `Land` must be ISO 3166-1 alpha-3. To change the contact data of an address record (telephone, fax, email) additional parameters are necessary and are supported through the `add`, `modify`, and `delete` methods.
      */
     public function update(array $map): self
     {

@@ -18,7 +18,7 @@ class OnOfficeApi extends Connector
 
     public function resolveBaseUrl(): string
     {
-        return 'https://api.onoffice.de/api/stable/api.php';
+        return config('onoffice.base_url') ?? 'https://api.onoffice.de/api/stable/api.php';
     }
 
     /**
@@ -39,8 +39,13 @@ class OnOfficeApi extends Connector
         return new OnOfficeAuthenticator($this->token, $this->secret);
     }
 
-    public static function for(string $token, string $secret)
+    public static function for(string $token, string $secret): OnOfficeApi
     {
         return new OnOfficeApi($token, $secret);
+    }
+
+    public static function start(): OnOfficeApiRequest
+    {
+        return new OnOfficeApiRequest();
     }
 }

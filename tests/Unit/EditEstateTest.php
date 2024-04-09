@@ -35,31 +35,24 @@ it('will render a suitable action array', function () {
         ->estateLanguage(Language::German)
         ->render();
 
-    expect($actionArray['resourceid'])->toBe(0);
+    expect($actionArray['resourceid'])->toBe(0)
+        ->and($actionArray['parameters']['data'])
+        ->toHaveKeys([
+            'objektart',
+            'objekttyp',
+            'vermarktungsart',
+            'objekttyp',
+            'plz',
+            'ort',
+            'land',
+            'heizungsart',
+            'status',
+            'verkauft',
+            'reserviert',
+        ])
+        ->and($actionArray['parameters']['estatelanguage'])->toBe(Language::German->value)
+        ->and($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
 
-    expect($actionArray['parameters']['data'])
-        ->toHaveKeys(
-            [
-                'objektart',
-                'objekttyp',
-                'vermarktungsart',
-                'objekttyp',
-                'plz',
-                'ort',
-                'land',
-                'heizungsart',
-                'status',
-                'verkauft',
-                'reserviert',
-            ]
-        );
-
-    expect($actionArray['parameters']['estatelanguage'])
-        ->toBe(
-            Language::German->value
-        );
-
-    expect($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
 });
 
 it('will not allow illegal arguments in update', function () {

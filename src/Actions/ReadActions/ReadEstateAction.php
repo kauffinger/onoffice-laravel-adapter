@@ -36,15 +36,10 @@ class ReadEstateAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $data
-     * `ARRAY of fields that you want to read.` *All fields specified in the enterprise administration are valid here.*
-     * *Example:*
-     * ```php
-     * ['Id', 'kaufpreis', 'lage']
-     * ```
-     * If you want to read out the marketing status of an estate, you need you include verkauft and reserviert in the parameter data.
-     * In the response verkauft = 1 defines the marketing status “Sold” or “Rented”, depeding on the marketing method.
-     * reserviert = 1 stands for the marketing status “Reserved”.  verkauft = 0 and reserviert = 0 represent the marketing status “Open”.
+     * @param  string[]  $data  array of fields that you want to read e.g. ['Id', 'kaufpreis', 'lage']
+     *                          If you want to read out the marketing status of an estate, you need you include verkauft and reserviert in the parameter data.
+     *                          In response, verkauft = 1 defines the marketing status “Sold” or “Rented”, depeding on the marketing method.
+     *                          reserviert = 1 stands for the marketing status “Reserved”.  verkauft = 0 and reserviert = 0 represent the marketing status “Open”.
      *
      * The special field multiParkingLot (Stellplätze Multiparking) can now also be queried and is listed as an array in the response.
      */

@@ -24,7 +24,7 @@ class EditSearchCriteriaAction implements ActionInterface
     }
 
     /**
-     * @param  array<string, mixed>  $data Keys of fields to change and values they should be changed to.
+     * @param  array<string, mixed>  $data  Keys of fields to change and values they should be changed to.
      */
     public function update(array $data): self
     {

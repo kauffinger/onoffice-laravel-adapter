@@ -5,8 +5,10 @@ declare(strict_types=1);
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadRecordsLastSeenAction;
 use Kauffinger\OnOfficeApi\Enums\RecordsLastSeenModule;
-use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockResponse;
+use Saloon\Laravel\Saloon;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::read()->recordsLastSeen();
@@ -19,13 +21,12 @@ it('will render a suitable action array', function () {
         ->module(RecordsLastSeenModule::Address)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['module', 'listlimit']);
-    expect($actionArray['parameters']['module'])->toBe(RecordsLastSeenModule::Address->value);
-    expect($actionArray['parameters']['listlimit'])->toBe(0);
+    expect($actionArray['parameters'])->toHaveKeys(['module', 'listlimit'])
+        ->and($actionArray['parameters']['module'])->toBe(RecordsLastSeenModule::Address->value)
+        ->and($actionArray['parameters']['listlimit'])->toBe(0);
 });
 
 it('will send a successful request', function () {
-    $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
     $request = new OnOfficeApiRequest();
     $request->addAction(
         Action::read()
@@ -33,6 +34,11 @@ it('will send a successful request', function () {
             ->module(RecordsLastSeenModule::Address)
     );
 
-    $response = $api->send($request);
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    Saloon::fake([
+        MockResponse::make([]),
+    ]);
+
+    $response = OnOfficeApi::send($request);
+
+    expect($response->ok())->toBeTrue();
 });

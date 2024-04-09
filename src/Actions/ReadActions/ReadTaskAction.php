@@ -45,12 +45,8 @@ class ReadTaskAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $data
-     * `ARRAY of fields that you want to read.`
-     * *List of available fields:*
-     * ```
-     * Eintragsdatum, modified, von, Deadline, Prio, Aufgabe, Verantwortung, Art, Status, Betreff, Bearbeiter, Beginnt_am, Aufwand_Soll_NUM, Einheit_Aufwand_Soll, Aufwand_Zusatz_NUM, Einheit_Aufwand_Zusatz, erledigt, publicDescription, Stand, Deadline_strikt, Deadline_Zeit, Beginnt_um, Austragsdatum, Erinnerung, Erinnerungsdatum, Erinnerungsdatum_Zeit, Privat, Verantwortung_Gruppe, Kommentar
-     * ```
+     * @param  string[]  $data  array of fields that you want to read
+     *                          Eintragsdatum, modified, von, Deadline, Prio, Aufgabe, Verantwortung, Art, Status, Betreff, Bearbeiter, Beginnt_am, Aufwand_Soll_NUM, Einheit_Aufwand_Soll, Aufwand_Zusatz_NUM, Einheit_Aufwand_Zusatz, erledigt, publicDescription, Stand, Deadline_strikt, Deadline_Zeit, Beginnt_um, Austragsdatum, Erinnerung, Erinnerungsdatum, Erinnerungsdatum_Zeit, Privat, Verantwortung_Gruppe, Kommentar
      */
     public function setData(array $data): self
     {

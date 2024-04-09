@@ -59,12 +59,7 @@ class ReadAddressAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $data
-     * `ARRAY of fields that you want to read.` *All fields specified in the enterprise administration are valid here.*
-     * *Example:*
-     * ```php
-     * ['phone', 'mobile', 'fax']
-     * ```
+     * @param  string[]  $data  array of fields that you want to read. e.g. ['phone', 'mobile', 'fax']
      */
     public function setData(array $data): self
     {

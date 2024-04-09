@@ -17,7 +17,7 @@ enum SpecialAddressField: string
     case PrivateFax = 'fax_private';
     case BusinessFax = 'fax_business';
 
-    public static function getAllCases()
+    public static function getAllCases(): array
     {
         return array_column(self::cases(), 'value');
     }

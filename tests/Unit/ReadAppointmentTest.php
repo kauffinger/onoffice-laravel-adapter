@@ -5,8 +5,10 @@ declare(strict_types=1);
 use Illuminate\Support\Carbon;
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAppointmentAction;
-use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockResponse;
+use Saloon\Laravel\Saloon;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::read()->appointment();
@@ -22,15 +24,14 @@ it('will render a suitable action array', function () {
         ->allUsers()
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['datestart', 'dateend', 'allusers', 'showcancelled']);
-    expect($actionArray['parameters']['datestart'])->toBeString();
-    expect($actionArray['parameters']['dateend'])->toBeString();
-    expect($actionArray['parameters']['allusers'])->toBeTrue();
-    expect($actionArray['parameters']['showcancelled'])->toBeTrue();
+    expect($actionArray['parameters'])->toHaveKeys(['datestart', 'dateend', 'allusers', 'showcancelled'])
+        ->and($actionArray['parameters']['datestart'])->toBeString()
+        ->and($actionArray['parameters']['dateend'])->toBeString()
+        ->and($actionArray['parameters']['allusers'])->toBeTrue()
+        ->and($actionArray['parameters']['showcancelled'])->toBeTrue();
 });
 
 it('will send a successful request', function () {
-    $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
     $request = new OnOfficeApiRequest();
     $request->addAction(
         Action::read()
@@ -41,6 +42,11 @@ it('will send a successful request', function () {
             ->allUsers()
     );
 
-    $response = $api->send($request);
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    Saloon::fake([
+        MockResponse::make([]),
+    ]);
+
+    $response = OnOfficeApi::send($request);
+
+    expect($response->ok())->toBeTrue();
 });
