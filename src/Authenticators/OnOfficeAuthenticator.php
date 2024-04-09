@@ -49,13 +49,13 @@ readonly class OnOfficeAuthenticator implements Authenticator
         return $body['request']['actions'];
     }
 
-    private function build(string $actionId, string $resourceId, string $resourceType, array $parameters): array
+    private function build(string $actionId, string|int $resourceId, string $resourceType, array $parameters): array
     {
         $timestamp = time();
 
         return [
             'actionid' => $actionId,
-            'resourceid' => $resourceId,
+            'resourceid' => (string) $resourceId,
             'identifier' => '',
             'resourcetype' => $resourceType,
             'timestamp' => $timestamp,
