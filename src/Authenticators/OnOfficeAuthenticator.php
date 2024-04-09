@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Kauffinger\OnOfficeApi\Authenticators;
 
 use Saloon\Contracts\Authenticator;
-use Saloon\Contracts\PendingRequest;
+use Saloon\Http\PendingRequest;
 
-class OnOfficeAuthenticator implements Authenticator
+readonly class OnOfficeAuthenticator implements Authenticator
 {
     public function __construct(
-        private readonly string $token,
-        private readonly string $secret,
+        private string $token,
+        private string $secret,
     ) {
     }
 
@@ -49,7 +49,7 @@ class OnOfficeAuthenticator implements Authenticator
         return $body['request']['actions'];
     }
 
-    private function build(string $actionId, string $resourceId, string $resourceType, array $parameters)
+    private function build(string $actionId, string $resourceId, string $resourceType, array $parameters): array
     {
         $timestamp = time();
 
@@ -63,10 +63,9 @@ class OnOfficeAuthenticator implements Authenticator
             'parameters' => $parameters,
             'hmac_version' => '2',
         ];
-
     }
 
-    private function createHmac2($timestamp, $type, $actionId)
+    private function createHmac2($timestamp, $type, $actionId): string
     {
         $fields = [
             'timestamp' => $timestamp,
