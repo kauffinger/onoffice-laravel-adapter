@@ -6,8 +6,10 @@ use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditEstateAction;
 use Kauffinger\OnOfficeApi\Enums\EstateStatus;
 use Kauffinger\OnOfficeApi\Enums\Language;
-use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockResponse;
+use Saloon\Laravel\Saloon;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::edit()->estate(0);
@@ -61,23 +63,27 @@ it('will not allow illegal arguments in update', function () {
         ->update($invalidKeys);
 })->throws(InvalidArgumentException::class);
 
-/* it('will send a successful request', function () { */
-/*     $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret')); */
-/*     $request = new OnOfficeApiRequest(); */
-/*     $request->addAction( */
-/*         Action::edit() */
-/*             ->estate(1) */
-/*             ->update( */
-/*                 [ */
-/*                     'Vorname' => 'Peter', */
-/*                     'Name' => 'Lustig', */
-/*                     'Strasse' => 'Hauptst. 2', */
-/*                     'Land' => 'DEU', */
-/*                     'Geburtsdatum' => '2017-01-31 12:00:00', */
-/*                 ] */
-/*             ) */
-/*     ); */
-/**/
-/*     $response = $api->send($request); */
-/*     expect($response->collect()->get('status')['code'])->toBe(200); */
-/* }); */
+it('will send a successful request', function () {
+
+    $request = new OnOfficeApiRequest();
+    $request->addAction(
+        Action::edit()
+            ->estate(1)
+            ->update(
+                [
+                    'Vorname' => 'Peter',
+                    'Name' => 'Lustig',
+                    'Strasse' => 'Hauptst. 2',
+                    'Land' => 'DEU',
+                    'Geburtsdatum' => '2017-01-31 12:00:00',
+                ]
+            )
+    );
+
+    Saloon::fake([
+        MockResponse::make([]),
+    ]);
+
+    $response = OnOfficeApi::send($request);
+    expect($response->ok())->toBeTrue();
+});
