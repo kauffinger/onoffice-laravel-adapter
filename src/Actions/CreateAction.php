@@ -9,4 +9,13 @@ use Kauffinger\OnOfficeApi\Actions\CreateActions\CreateEstateAction;
 
 class CreateAction
 {
+    public function estate(): CreateEstateAction
+    {
+        return new CreateEstateAction();
+    }
+
+    public function address(): CreateAddressAction
+    {
+        return new CreateAddressAction();
+    }
 }
