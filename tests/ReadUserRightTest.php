@@ -21,9 +21,9 @@ it('will render a suitable action array', function () {
         ->module(UserRightsModule::Address)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['action', 'module']);
-    expect($actionArray['parameters']['action'])->toBe(ActionType::Read->value);
-    expect($actionArray['parameters']['module'])->toBe(UserRightsModule::Address->value);
+    expect($actionArray['parameters'])->toHaveKeys(['action', 'module'])
+        ->and($actionArray['parameters']['action'])->toBe(ActionType::Read->value)
+        ->and($actionArray['parameters']['module'])->toBe(UserRightsModule::Address->value);
 });
 
 it('will send a successful request', function () {

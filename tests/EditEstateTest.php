@@ -35,9 +35,8 @@ it('will render a suitable action array', function () {
         ->estateLanguage(Language::German)
         ->render();
 
-    expect($actionArray['resourceid'])->toBe(0);
-
-    expect($actionArray['parameters']['data'])
+    expect($actionArray['resourceid'])->toBe(0)
+        ->and($actionArray['parameters']['data'])
         ->toHaveKeys(
             [
                 'objektart',
@@ -52,14 +51,13 @@ it('will render a suitable action array', function () {
                 'verkauft',
                 'reserviert',
             ]
-        );
-
-    expect($actionArray['parameters']['estatelanguage'])
+        )
+        ->and($actionArray['parameters']['estatelanguage'])
         ->toBe(
             Language::German->value
-        );
+        )
+        ->and($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
 
-    expect($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
 });
 
 it('will not allow illegal arguments in update', function () {

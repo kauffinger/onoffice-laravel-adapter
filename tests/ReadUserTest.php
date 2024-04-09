@@ -21,10 +21,10 @@ it('will render a suitable action array', function () {
         ->setListLimit(200)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['listlimit', 'data', 'sortby']);
-    expect($actionArray['parameters']['listlimit'])->toBe(200);
-    expect($actionArray['parameters']['sortby'])->toMatchArray(['Anrede' => SortOrder::Ascending->value]);
-    expect($actionArray['parameters']['data'])->toMatchArray(['Anrede', 'Titel', 'Kuerzel']);
+    expect($actionArray['parameters'])->toHaveKeys(['listlimit', 'data', 'sortby'])
+        ->and($actionArray['parameters']['listlimit'])->toBe(200)
+        ->and($actionArray['parameters']['sortby'])->toMatchArray(['Anrede' => SortOrder::Ascending->value])
+        ->and($actionArray['parameters']['data'])->toMatchArray(['Anrede', 'Titel', 'Kuerzel']);
 });
 
 it('will send a successful request', function () {

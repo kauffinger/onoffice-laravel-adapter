@@ -22,12 +22,12 @@ it('will render a suitable action array', function () {
         ->setListLimit(200)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data', 'relatedEstateId', 'relatedProjectIds', 'listlimit']);
-    expect($actionArray['parameters']['listlimit'])->toBe(200);
-    expect($actionArray['parameters']['relatedEstateId'])->toBe(2);
-    expect($actionArray['parameters']['relatedProjectIds'])->toBe(1);
-    expect($actionArray['parameters']['addMobileUrl'])->toBe(true);
-    expect($actionArray['parameters']['data'])->toMatchArray(['Eintragsdatum', 'modified']);
+    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data', 'relatedEstateId', 'relatedProjectIds', 'listlimit'])
+        ->and($actionArray['parameters']['listlimit'])->toBe(200)
+        ->and($actionArray['parameters']['relatedEstateId'])->toBe(2)
+        ->and($actionArray['parameters']['relatedProjectIds'])->toBe(1)
+        ->and($actionArray['parameters']['addMobileUrl'])->toBe(true)
+        ->and($actionArray['parameters']['data'])->toMatchArray(['Eintragsdatum', 'modified']);
 });
 
 it('will send a successful request', function () {

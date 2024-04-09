@@ -21,9 +21,9 @@ it('will render a suitable action array', function () {
         ->setListLimit(200)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['listlimit', 'sortby']);
-    expect($actionArray['parameters']['listlimit'])->toBe(200);
-    expect($actionArray['parameters']['sortby'])->toMatchArray(['id' => SortOrder::Ascending->value]);
+    expect($actionArray['parameters'])->toHaveKeys(['listlimit', 'sortby'])
+        ->and($actionArray['parameters']['listlimit'])->toBe(200)
+        ->and($actionArray['parameters']['sortby'])->toMatchArray(['id' => SortOrder::Ascending->value]);
 });
 
 it('will send a successful request', function () {

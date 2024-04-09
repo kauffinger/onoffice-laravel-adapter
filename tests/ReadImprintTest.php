@@ -21,16 +21,16 @@ it('will render a suitable action array', function () {
         ->formatOutput()
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['data']);
-    expect($actionArray['parameters']['data'])->toMatchArray(
-        [
-            'title',
-            'firstname',
-            'lastname',
-            'ustId',
-            'bank',
-        ]
-    );
+    expect($actionArray['parameters'])->toHaveKeys(['data'])
+        ->and($actionArray['parameters']['data'])->toMatchArray(
+            [
+                'title',
+                'firstname',
+                'lastname',
+                'ustId',
+                'bank',
+            ]
+        );
 });
 
 it('will send a successful request', function () {

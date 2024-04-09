@@ -32,9 +32,8 @@ it('will render a suitable action array', function () {
         ->delete(SpecialAddressField::Fax, '123123123')
         ->render();
 
-    expect($actionArray['resourceid'])->toBe(0);
-
-    expect($actionArray['parameters'])
+    expect($actionArray['resourceid'])->toBe(0)
+        ->and($actionArray['parameters'])
         ->toHaveKeys(
             [
                 'Vorname',
@@ -46,18 +45,16 @@ it('will render a suitable action array', function () {
                 SpecialAddressField::Phone->value,
                 SpecialAddressField::Fax->value,
             ]
-        );
-
-    expect($actionArray['parameters'][SpecialAddressField::Email->value])
+        )
+        ->and($actionArray['parameters'][SpecialAddressField::Email->value])
         ->toMatchArray(
             [
                 'action' => 'add',
                 'newvalue' => 'max.mustermann982@beispiel.de',
                 'default' => true,
             ]
-        );
-
-    expect($actionArray['parameters'][SpecialAddressField::Phone->value])
+        )
+        ->and($actionArray['parameters'][SpecialAddressField::Phone->value])
         ->toMatchArray(
             [
                 'action' => 'modify',
@@ -65,15 +62,15 @@ it('will render a suitable action array', function () {
                 'newvalue' => '+49 22222222',
                 'default' => false,
             ]
-        );
-
-    expect($actionArray['parameters'][SpecialAddressField::Fax->value])
+        )
+        ->and($actionArray['parameters'][SpecialAddressField::Fax->value])
         ->toMatchArray(
             [
                 'action' => 'delete',
                 'oldvalue' => '123123123',
             ]
         );
+
 });
 
 it('will not allow illegal arguments in update', function () {

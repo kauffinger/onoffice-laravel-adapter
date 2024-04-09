@@ -17,18 +17,18 @@ it('will render a suitable action array', function () {
     $actionArray = $action
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['data']);
-    expect($actionArray['parameters']['data'])->toMatchArray([
-        'basicData' => [
-            'logo',
-            'color',
-            'color2',
-            'textcolorMail',
-            'claim',
-        ],
-        'permissions' => ['/onOfficeApp/timetracking/enabled'],
-        'team' => ['about'],
-    ], );
+    expect($actionArray['parameters'])->toHaveKeys(['data'])
+        ->and($actionArray['parameters']['data'])->toMatchArray([
+            'basicData' => [
+                'logo',
+                'color',
+                'color2',
+                'textcolorMail',
+                'claim',
+            ],
+            'permissions' => ['/onOfficeApp/timetracking/enabled'],
+            'team' => ['about'],
+        ],);
 });
 
 it('will send a successful request', function () {

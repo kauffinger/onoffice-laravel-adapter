@@ -26,11 +26,11 @@ it('will render a suitable action array', function () {
         ->setListLimit(200)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data', 'formatoutput', 'listlimit']);
-    expect($actionArray['parameters']['listlimit'])->toBe(200);
-    expect($actionArray['parameters']['formatoutput'])->toBe(true);
-    expect($actionArray['parameters']['addMobileUrl'])->toBe(true);
-    expect($actionArray['parameters']['data'])->toMatchArray(['phone', 'mobile']);
+    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data', 'formatoutput', 'listlimit'])
+        ->and($actionArray['parameters']['listlimit'])->toBe(200)
+        ->and($actionArray['parameters']['formatoutput'])->toBe(true)
+        ->and($actionArray['parameters']['addMobileUrl'])->toBe(true)
+        ->and($actionArray['parameters']['data'])->toMatchArray(['phone', 'mobile']);
 });
 
 it('will send a successful request', function () {

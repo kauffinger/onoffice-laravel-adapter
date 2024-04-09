@@ -19,8 +19,8 @@ it('will render a suitable action array', function () {
         ->setData(['Id', 'kaufpreis'])
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data']);
-    expect($actionArray['parameters']['data'])->toMatchArray(['Id', 'kaufpreis']);
+    expect($actionArray['parameters'])->toHaveKeys(['addMobileUrl', 'data'])
+        ->and($actionArray['parameters']['data'])->toMatchArray(['Id', 'kaufpreis']);
 });
 
 it('will send a successful request', function () {

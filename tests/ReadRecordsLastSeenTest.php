@@ -19,9 +19,9 @@ it('will render a suitable action array', function () {
         ->module(RecordsLastSeenModule::Address)
         ->render();
 
-    expect($actionArray['parameters'])->toHaveKeys(['module', 'listlimit']);
-    expect($actionArray['parameters']['module'])->toBe(RecordsLastSeenModule::Address->value);
-    expect($actionArray['parameters']['listlimit'])->toBe(0);
+    expect($actionArray['parameters'])->toHaveKeys(['module', 'listlimit'])
+        ->and($actionArray['parameters']['module'])->toBe(RecordsLastSeenModule::Address->value)
+        ->and($actionArray['parameters']['listlimit'])->toBe(0);
 });
 
 it('will send a successful request', function () {
