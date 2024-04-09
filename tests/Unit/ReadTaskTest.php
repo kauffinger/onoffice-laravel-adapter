@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
-use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockResponse;
+use Saloon\Laravel\Saloon;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::read()->task();
@@ -40,10 +42,12 @@ it('will send a successful request', function () {
             ->setListLimit(200)
     );
 
-    $response = OnOfficeApi::for(
-        config('onoffice.token'), config('onoffice.secret')
-    )
-        ->send($request);
 
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    Saloon::fake([
+        MockResponse::make([]),
+    ]);
+
+    $response = OnOfficeApi::send($request);
+
+    expect($response->ok())->toBeTrue();
 });

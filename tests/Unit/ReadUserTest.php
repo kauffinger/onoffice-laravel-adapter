@@ -5,8 +5,10 @@ declare(strict_types=1);
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
 use Kauffinger\OnOfficeApi\Enums\SortOrder;
-use Kauffinger\OnOfficeApi\OnOfficeApi;
+use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
+use Saloon\Http\Faking\MockResponse;
+use Saloon\Laravel\Saloon;
 
 it('can be retrieved from Action base class', function () {
     $instance = Action::read()->user();
@@ -28,7 +30,6 @@ it('will render a suitable action array', function () {
 });
 
 it('will send a successful request', function () {
-    $api = new OnOfficeApi(config('onoffice.token'), config('onoffice.secret'));
     $request = new OnOfficeApiRequest();
     $request->addAction(
         Action::read()
@@ -38,6 +39,11 @@ it('will send a successful request', function () {
             ->setListLimit(200)
     );
 
-    $response = $api->send($request);
-    expect($response->collect()->get('status')['code'])->toBe(200);
+    Saloon::fake([
+        MockResponse::make([]),
+    ]);
+
+    $response = OnOfficeApi::send($request);
+
+    expect($response->ok())->toBeTrue();
 });
