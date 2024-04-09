@@ -37,25 +37,20 @@ it('will render a suitable action array', function () {
 
     expect($actionArray['resourceid'])->toBe(0)
         ->and($actionArray['parameters']['data'])
-        ->toHaveKeys(
-            [
-                'objektart',
-                'objekttyp',
-                'vermarktungsart',
-                'objekttyp',
-                'plz',
-                'ort',
-                'land',
-                'heizungsart',
-                'status',
-                'verkauft',
-                'reserviert',
-            ]
-        )
-        ->and($actionArray['parameters']['estatelanguage'])
-        ->toBe(
-            Language::German->value
-        )
+        ->toHaveKeys([
+            'objektart',
+            'objekttyp',
+            'vermarktungsart',
+            'objekttyp',
+            'plz',
+            'ort',
+            'land',
+            'heizungsart',
+            'status',
+            'verkauft',
+            'reserviert',
+        ])
+        ->and($actionArray['parameters']['estatelanguage'])->toBe(Language::German->value)
         ->and($actionArray['parameters']['data']['status'])->toBe(EstateStatus::Pending->value);
 
 });
