@@ -15,4 +15,9 @@ class Action
     {
         return new EditAction();
     }
+
+    public static function create(): CreateAction
+    {
+        return new CreateAction();
+    }
 }
