@@ -42,7 +42,6 @@ it('will send a successful request', function () {
             ->setListLimit(200)
     );
 
-
     Saloon::fake([
         MockResponse::make([]),
     ]);

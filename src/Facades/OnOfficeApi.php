@@ -10,6 +10,7 @@ use Saloon\Http\Response;
 
 /**
  * @see \Kauffinger\OnOfficeApi\OnOfficeApi
+ *
  * @method static Response send(OnOfficeApiRequest $request)
  * @method static OnOfficeApiRequest start()
  */
