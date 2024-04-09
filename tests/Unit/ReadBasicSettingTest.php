@@ -28,7 +28,7 @@ it('will render a suitable action array', function () {
             ],
             'permissions' => ['/onOfficeApp/timetracking/enabled'],
             'team' => ['about'],
-        ],);
+        ]);
 });
 
 it('will send a successful request', function () {

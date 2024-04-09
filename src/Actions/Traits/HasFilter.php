@@ -12,8 +12,8 @@ trait HasFilter
      * Must be one of the following: `is` or `=`, `>`, `<`, `>=`, `<=`, `!=` or `<>`, `between`, `like`, `not like`, `in`, `not in`
      *
      * @param  string|int|array  $value
-     * For some params, this can be an array of values.
-     * When using like, you can use `%` as a wildcard.
+     *                                   For some params, this can be an array of values.
+     *                                   When using like, you can use `%` as a wildcard.
      */
     public function addFilter(string $operator, string|int|array $value)
     {

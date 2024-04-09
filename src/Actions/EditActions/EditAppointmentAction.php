@@ -24,7 +24,7 @@ class EditAddressAction implements ActionInterface
     }
 
     /**
-     * @param  array<string, string>  $map Keys of fields to change and values they should be changed to. `Land` must be ISO 3166-1 alpha-3. To change the contact data of an address record (telephone, fax, email) additional parameters are necessary and are supported through the `add`, `modify`, and `delete` methods.
+     * @param  array<string, string>  $map  Keys of fields to change and values they should be changed to. `Land` must be ISO 3166-1 alpha-3. To change the contact data of an address record (telephone, fax, email) additional parameters are necessary and are supported through the `add`, `modify`, and `delete` methods.
      */
     public function update(array $map): self
     {
@@ -74,7 +74,7 @@ class EditAddressAction implements ActionInterface
      * Either set a transit time or a transit time with return time.
      * Only passing $transitTime will set 'transitTime', passing two parameters will set 'transitTimePre' and 'transitTimePost'
      */
-    public function setTransitTime(CarbonInterval $transitTime, CarbonInterval $returnTime = null): self
+    public function setTransitTime(CarbonInterval $transitTime, ?CarbonInterval $returnTime = null): self
     {
         $this->actionArray['data']['allowTransitTime'] = true;
 

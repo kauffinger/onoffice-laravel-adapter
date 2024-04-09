@@ -40,8 +40,8 @@ class EditFileAction implements ActionInterface
     ];
 
     /**
-     * @param    $fileId  ID of the file to be edited.
-     * @param    $parentId  ID of the property record whose files you want to change.
+     * @param  $fileId  ID of the file to be edited.
+     * @param  $parentId  ID of the property record whose files you want to change.
      */
     public function __construct(
         int $fileId,
@@ -60,7 +60,7 @@ class EditFileAction implements ActionInterface
     }
 
     /**
-     * @param  array<string, mixed>  $data Keys of fields to change and values they should be changed to.
+     * @param  array<string, mixed>  $data  Keys of fields to change and values they should be changed to.
      */
     public function update(array $data): self
     {

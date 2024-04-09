@@ -25,8 +25,7 @@ class ReadImprintAction implements ActionInterface
     }
 
     /**
-     * @param  string[]  $data
-     * The fields you want to query. If data is not set, all fields will be returned. The following fields can be queried: title, firstname, lastname, firma, postcode, city, street, housenumber, state, country, phone, mobil, fax, email, homepage, vertretungsberechtigter, berufsaufsichtsbehoerde, handelsregister, handelsregisterNr, ustId, bank, iban, bic, chamber.
+     * @param  string[]  $data  The fields you want to query. If data is not set, all fields will be returned. The following fields can be queried: title, firstname, lastname, firma, postcode, city, street, housenumber, state, country, phone, mobil, fax, email, homepage, vertretungsberechtigter, berufsaufsichtsbehoerde, handelsregister, handelsregisterNr, ustId, bank, iban, bic, chamber.
      */
     public function setData(array $data): self
     {
