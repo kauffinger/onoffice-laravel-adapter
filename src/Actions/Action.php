@@ -20,4 +20,9 @@ class Action
     {
         return new CreateAction();
     }
+
+    public static function get(): GetAction
+    {
+        return new GetAction();
+    }
 }

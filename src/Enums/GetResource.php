@@ -8,6 +8,7 @@ enum GetResource: string
 {
     case Search = 'search';
     case EmailLink = 'emailassignments';
+    case Link = 'getlink';
     case MailSignature = 'emailsignature';
     case Template = 'templates';
     case FieldConfiguration = 'fields';
