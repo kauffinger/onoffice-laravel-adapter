@@ -10,11 +10,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class OnOfficeApiServiceProvider extends PackageServiceProvider
 {
-    public function register(): void
-    {
-        $this->app->bind(OnOfficeApi::class, fn (): OnOfficeApi => new OnOfficeApi(config('onoffice.token'), config('onoffice.secret')));
-    }
-
     public function configurePackage(Package $package): void
     {
         /*
@@ -27,7 +22,12 @@ class OnOfficeApiServiceProvider extends PackageServiceProvider
             ->hasConfigFile('onoffice');
     }
 
-    public function boot(): void
+    public function packageRegistered(): void
+    {
+        $this->app->bind(OnOfficeApi::class, fn (): OnOfficeApi => new OnOfficeApi(config('onoffice.token'), config('onoffice.secret')));
+    }
+
+    public function packageBooted(): void
     {
         Collection::macro('putIfNotNull', function ($key, $value) {
             if ($value !== null) {
