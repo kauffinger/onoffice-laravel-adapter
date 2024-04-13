@@ -24,7 +24,7 @@ class OnOfficeApiServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('onoffice-laravel-adapter')
-            ->hasConfigFile();
+            ->hasConfigFile('onoffice');
     }
 
     public function boot(): void
