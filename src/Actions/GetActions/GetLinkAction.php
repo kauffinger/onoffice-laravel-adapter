@@ -15,8 +15,8 @@ class GetLinkAction implements ActionInterface
 {
     public function __construct(
         private readonly GetLinkModule $module,
-        private readonly int           $recordId,
-        private array                  $actionArray = [],
+        private readonly int $recordId,
+        private array $actionArray = [],
     ) {
         $this->actionArray['recordId'] = $this->recordId;
     }
