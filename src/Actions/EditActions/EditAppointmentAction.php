@@ -14,7 +14,7 @@ use Kauffinger\OnOfficeApi\Enums\EditResource;
 /**
  * `Changes information from address records.`
  */
-class EditAddressAction implements ActionInterface
+class EditAppointmentAction implements ActionInterface
 {
     public function __construct(
         private readonly int $resourceId,
@@ -126,7 +126,7 @@ class EditAddressAction implements ActionInterface
     }
 
     /**
-     * Ressources of the appointment. All existing ressources are replaced with the given array. The values can be read out under “Extras >> Settings >> Administration >> Singleselect >> Modul: Calendar management, Field: ressources”
+     * Resources of the appointment. All existing resources are replaced with the given array. The values can be read out under “Extras >> Settings >> Administration >> Singleselect >> Modul: Calendar management, Field: ressources”
      */
     public function setResources(string ...$resources): self
     {
@@ -161,7 +161,7 @@ class EditAddressAction implements ActionInterface
         return $this;
     }
 
-    //TODO: location, subscribers, reminderTypes
+    // TODO: location, subscribers, reminderTypes
 
     public function setRelatedEstateIds(int $estateId): self
     {
@@ -178,7 +178,7 @@ class EditAddressAction implements ActionInterface
         return [
             'actionid' => ActionType::Edit->value,
             'resourceid' => $this->resourceId ?? '',
-            'resourcetype' => EditResource::Address->value,
+            'resourcetype' => EditResource::Appointment->value,
             'parameters' => $parameters,
         ];
     }
