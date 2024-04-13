@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Kauffinger\OnOfficeApi\Actions\EditActions;
 
 use InvalidArgumentException;
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\EditResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EditResource;
 
 /**
  * `Changes information from estate records.`

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kauffinger\OnOfficeApi\Enums;
+namespace Kauffinger\OnOfficeApi\Contracts;
 
 interface OnOfficeResource
 {

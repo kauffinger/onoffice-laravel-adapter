@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Enums;
 
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\CreateResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EditResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\GetResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
+
 enum ActionType: string
 {
     case Read = 'urn:onoffice-de-ns:smart:2.5:smartml:action:read';

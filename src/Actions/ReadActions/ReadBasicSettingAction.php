@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
 
 /**
  * Read out the basic settings in enterprise (Extras->Settings->Basic settings). For now, only the category “Characteristics/CI” on the tab “Basic Data” is returned and a few other settings.

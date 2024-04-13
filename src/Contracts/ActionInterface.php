@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kauffinger\OnOfficeApi\Actions;
+namespace Kauffinger\OnOfficeApi\Contracts;
 
 interface ActionInterface
 {

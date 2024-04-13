@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

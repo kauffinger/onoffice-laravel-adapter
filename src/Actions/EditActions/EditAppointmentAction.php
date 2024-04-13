@@ -6,10 +6,10 @@ namespace Kauffinger\OnOfficeApi\Actions\EditActions;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Kauffinger\OnOfficeApi\Enums\AppointmentReminderInterval;
-use Kauffinger\OnOfficeApi\Enums\EditResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EditResource;
 
 /**
  * `Changes information from address records.`

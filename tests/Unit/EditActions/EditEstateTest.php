@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Kauffinger\OnOfficeApi\Actions\Action;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditEstateAction;
-use Kauffinger\OnOfficeApi\Enums\EstateStatus;
 use Kauffinger\OnOfficeApi\Enums\Language;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EstateStatus;
 use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
 use Saloon\Http\Faking\MockResponse;

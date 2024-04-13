@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\CreateActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\EditResource;
-use Kauffinger\OnOfficeApi\Enums\EstateStatus;
 use Kauffinger\OnOfficeApi\Enums\Language;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EditResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\EstateStatus;
 
 /**
  * `Changes information from estate records.`

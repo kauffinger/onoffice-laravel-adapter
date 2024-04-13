@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilter;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
 
 /**
  * This API call reads user photos. The photos are delivered as base64 strings or as links, depending on the parameter photosAsLinks.

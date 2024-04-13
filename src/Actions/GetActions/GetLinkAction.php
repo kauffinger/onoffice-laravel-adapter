@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Kauffinger\OnOfficeApi\Actions\GetActions;
 
 use InvalidArgumentException;
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Kauffinger\OnOfficeApi\Enums\AgentsLogLinkType;
 use Kauffinger\OnOfficeApi\Enums\GetLinkModule;
-use Kauffinger\OnOfficeApi\Enums\GetResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\GetResource;
 
 class GetLinkAction implements ActionInterface
 {

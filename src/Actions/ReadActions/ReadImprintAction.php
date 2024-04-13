@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
 use Kauffinger\OnOfficeApi\Enums\Language;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
 
 /**
  * Reads the imprint in enterprise (Extras >> Settings >> Basic settings). If the user is a member of an office group, the imprint of the office group is retrieved (Extras >> Settings >> Groups >> Tab basic data).

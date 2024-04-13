@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasRecordIds;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
 use Kauffinger\OnOfficeApi\Enums\UserRightsModule;
 
 /**

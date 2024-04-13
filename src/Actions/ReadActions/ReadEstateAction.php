@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi\Actions\ReadActions;
 
-use Kauffinger\OnOfficeApi\Actions\ActionInterface;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilter;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFilterId;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasFormattableOutput;
@@ -14,8 +13,9 @@ use Kauffinger\OnOfficeApi\Actions\Traits\HasMultiLanguageEstates;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasOutputLanguage;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasPagination;
 use Kauffinger\OnOfficeApi\Actions\Traits\HasResourceId;
+use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
 use Kauffinger\OnOfficeApi\Enums\ActionType;
-use Kauffinger\OnOfficeApi\Enums\ReadResource;
+use Kauffinger\OnOfficeApi\Enums\OnOfficeResources\ReadResource;
 
 class ReadEstateAction implements ActionInterface
 {
