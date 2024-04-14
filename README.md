@@ -28,6 +28,9 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'token' => env('ON_OFFICE_TOKEN'),
+    'secret' => env('ON_OFFICE_SECRET'),
+    'base_url' => env('ON_OFFICE_BASE_URL', 'https://api.onoffice.de/api/stable/api.php'),
 ];
 ```
 
