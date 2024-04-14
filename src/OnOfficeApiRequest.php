@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kauffinger\OnOfficeApi;
 
 use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
+use Ramsey\Uuid\Uuid;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -40,7 +41,7 @@ class OnOfficeApiRequest extends Request implements HasBody
             [
                 'actions' => [
                     ...$currentBody['request']['actions'] ?? [],
-                    $action->render(),
+                    [...$action->render(), 'identifier' => $this->generateActionIdentifier($action)],
                 ],
             ]);
 
@@ -55,5 +56,10 @@ class OnOfficeApiRequest extends Request implements HasBody
     public static function with(ActionInterface $action): OnOfficeApiRequest
     {
         return (new OnOfficeApiRequest)->addAction($action);
+    }
+
+    private function generateActionIdentifier(ActionInterface $action): string
+    {
+        return Uuid::uuid4()->toString();
     }
 }
