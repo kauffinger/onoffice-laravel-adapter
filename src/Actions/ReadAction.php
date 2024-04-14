@@ -14,9 +14,12 @@ use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadTaskAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserPhotoAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadUserRightAction;
+use Kauffinger\OnOfficeApi\Actions\Traits\CreatesCustomAction;
 
 class ReadAction
 {
+    use CreatesCustomAction;
+
     public function estate(): ReadEstateAction
     {
         return new ReadEstateAction();

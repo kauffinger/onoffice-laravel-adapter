@@ -8,9 +8,12 @@ use Kauffinger\OnOfficeApi\Actions\EditActions\EditAddressAction;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditEstateAction;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditFileAction;
 use Kauffinger\OnOfficeApi\Actions\EditActions\EditSearchCriteriaAction;
+use Kauffinger\OnOfficeApi\Actions\Traits\CreatesCustomAction;
 
 class EditAction
 {
+    use CreatesCustomAction;
+
     public function address(int $resourceId): EditAddressAction
     {
         return new EditAddressAction(resourceId: $resourceId);
