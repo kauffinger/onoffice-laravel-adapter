@@ -86,34 +86,34 @@ but the response contains status.code == 500, the response will not
 be marked as OK:
 
 ```php
-    $response = OnOfficeApi::send($request);
-    $response->ok(); // would be false
+$response = OnOfficeApi::send($request);
+$response->ok(); // would be false
 ```
 
 Furthermore, it provides easy access to both the results of an onOffice response:
 
 ```php
-    $response->results();
-    // or as a collection
-    $response->collectedResults();
+$response->results();
+// or as a collection
+$response->collectedResults();
 ```
 
 If you don't need the full results array, because you maybe only sent a single action, you can access action data
 directly:
 
 ```php
-    $response->getData();
-    // or as a collection
-    $response->getCollectedData();
-    // get the first data array
-    $response->getData(0);
+$response->getData();
+// or as a collection
+$response->getCollectedData();
+// get the first data array
+$response->getData(0);
 ```
 
 You can determine if a response is cacheable by calling the `cacheable` method.
 It checks the response for each action in the request and checks cacheability:
 
 ```php
-    $response->cacheable();
+$response->cacheable();
 ```
 ## Known Issues
 
