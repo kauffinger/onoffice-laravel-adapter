@@ -70,7 +70,57 @@ $response = OnOfficeApi::for(
     ->send($request);
 ```
 
-## Features
+You can easily send multiple actions in one request:
+
+```php
+$request = OnOfficeApiRequest::with(
+    Action::read()->estate()
+)->withAction(
+    Action::read()->address()
+);
+```
+
+With the custom response class, you can easily manage the response.
+For example, when onOffice returns the HTTP status code 200,
+but the response contains status.code == 500, the response will not
+be marked as OK:
+
+```php
+    $response = OnOfficeApi::send($request);
+    $response->ok(); // would be false
+```
+
+Furthermore, it provides easy access to both the results of an onOffice response:
+
+```php
+    $response->results();
+    // or as a collection
+    $response->collectedResults();
+```
+
+If you don't need the full results array, because you maybe only sent a single action, you can access action data
+directly:
+
+```php
+    $response->getData();
+    // or as a collection
+    $response->getCollectedData();
+    // get the first data array
+    $response->getData(0);
+```
+
+You can determine if a response is cacheable by calling the `cacheable` method.
+It checks the response for each action in the request and checks cacheability:
+
+```php
+    $response->cacheable();
+```
+## Known Issues
+
+- Currently, no identifier seems to be returned from the onOffice API.
+
+
+## Future Features
 
 -   Access all onOffice API endpoints in a way that is as typesafe as possible (in progress)
 -   Integrate optional saloon based [caching](https://docs.saloon.dev/official-plugins/caching-responses) of requests (todo)
