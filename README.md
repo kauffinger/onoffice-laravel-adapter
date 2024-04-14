@@ -115,6 +115,23 @@ It checks the response for each action in the request and checks cacheability:
 ```php
 $response->cacheable();
 ```
+
+Since the goal of this SDK is to streamline onOffice API usage as much as possible,
+a lot of endpoints are still missing. You can then still use the library to send
+custom actions:
+
+```php
+$request->addAction(
+    Action::read()
+        ->custom() // this will give you full control over the action, except for the action type
+        ->setResourceType('estate')
+        ->setResourceId(123)
+        ->setParameters([
+            'data' => ['Id', 'kaufpreis']
+        ])
+);
+```
+
 ## Known Issues
 
 - Currently, no identifier seems to be returned from the onOffice API.
