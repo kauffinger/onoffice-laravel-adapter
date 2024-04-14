@@ -10,10 +10,10 @@ it('can render an action', function () {
         ->and($action['resourceid'])->toBe('')
         ->and($action['resourcetype'])->toBe('estate')
         ->and($action['parameters'])->toMatchArray([
-        'filter' => [],
-        'listlimit' => 20,
-        'listoffset' => 0,
-    ])
+            'filter' => [],
+            'listlimit' => 20,
+            'listoffset' => 0,
+        ])
         ->and($action['identifier'])->toBeUuid();
 });
 
@@ -24,7 +24,7 @@ it('can have multiple actions without overlapping identifiers', function () {
     }
 
     $actions = $request->body()->all()['request']['actions'];
-    $allIdentifiers = array_map(fn($action) => $action['identifier'], $actions);
+    $allIdentifiers = array_map(fn ($action) => $action['identifier'], $actions);
     expect(count($allIdentifiers))->toBe(10)
         ->and(count(array_unique($allIdentifiers)))->toBe(10);
 });

@@ -10,6 +10,8 @@ use Saloon\Http\Connector;
 
 class OnOfficeApi extends Connector
 {
+    protected ?string $response = OnOfficeApiResponse::class;
+
     public function __construct(
         private readonly string $token,
         private readonly string $secret,

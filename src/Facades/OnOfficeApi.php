@@ -6,12 +6,12 @@ namespace Kauffinger\OnOfficeApi\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
-use Saloon\Http\Response;
+use Kauffinger\OnOfficeApi\OnOfficeApiResponse;
 
 /**
  * @see \Kauffinger\OnOfficeApi\OnOfficeApi
  *
- * @method static Response send(OnOfficeApiRequest $request)
+ * @method static OnOfficeApiResponse send(OnOfficeApiRequest $request)
  * @method static OnOfficeApiRequest start()
  */
 class OnOfficeApi extends Facade

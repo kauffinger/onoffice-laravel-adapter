@@ -43,7 +43,7 @@ it('will send a successful request', function () {
     );
 
     Saloon::fake([
-        MockResponse::make([]),
+        MockResponse::make(['status' => ['code' => 200]]),
     ]);
 
     $response = OnOfficeApi::send($request);
