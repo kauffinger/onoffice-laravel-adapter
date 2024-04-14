@@ -13,6 +13,7 @@ use Kauffinger\OnOfficeApi\OnOfficeApiResponse;
  *
  * @method static OnOfficeApiResponse send(OnOfficeApiRequest $request)
  * @method static OnOfficeApiRequest start()
+ * @method static \Kauffinger\OnOfficeApi\OnOfficeApi for(string $token, string $secret)
  */
 class OnOfficeApi extends Facade
 {
