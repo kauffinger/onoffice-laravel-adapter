@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Kauffinger\OnOfficeApi;
 
+use Illuminate\Support\Str;
 use Kauffinger\OnOfficeApi\Contracts\ActionInterface;
-use Ramsey\Uuid\Uuid;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -60,6 +60,6 @@ class OnOfficeApiRequest extends Request implements HasBody
 
     private function generateActionIdentifier(ActionInterface $action): string
     {
-        return Uuid::uuid4()->toString();
+        return Str::uuid()->toString();
     }
 }
