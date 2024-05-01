@@ -28,6 +28,19 @@ class OnOfficeApiResponse extends Response
     }
 
     /**
+     * Get all records from an action sent with the request.
+     * This is useful when, for example, sending a ReadAddress action.
+     *
+     * @throws \JsonException
+     */
+    public function elements(int $actionIndex = 0): array
+    {
+        $data = $this->getData($actionIndex);
+
+        return data_get($data, 'records.*.elements', []);
+    }
+
+    /**
      * Get the data array of all results from all actions sent with the request.
      * When you set an index, you will get the data array of the result at that
      * index.
@@ -36,8 +49,7 @@ class OnOfficeApiResponse extends Response
      */
     public function getData(?int $index = null): array
     {
-        $data = array_map(fn ($r) => $r['data'] ?? [], $this->results());
-        $data = array_filter($data, fn ($d) => ! empty($d));
+        $data = data_get($this->results(), '*.data', []);
 
         if ($index !== null) {
             return $data[$index];

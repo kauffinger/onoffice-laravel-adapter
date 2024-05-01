@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadAddressAction;
 use Kauffinger\OnOfficeApi\Actions\ReadActions\ReadEstateAction;
 use Kauffinger\OnOfficeApi\Facades\OnOfficeApi;
 use Kauffinger\OnOfficeApi\OnOfficeApiRequest;
@@ -155,6 +156,7 @@ it('returns the data array when getData is called', function () {
                 'results' => [
                     ['data' => ['testkey' => 'testvalue']],
                     ['data' => ['testkey2' => 'testvalue2']],
+                    ['data' => []],
                 ],
             ],
         ],
@@ -168,4 +170,65 @@ it('returns the data array when getData is called', function () {
         ['testkey' => 'testvalue'],
         ['testkey2' => 'testvalue2'],
     ]);
+});
+
+it('can get the elements for a read request', function () {
+    Http::preventStrayRequests();
+    Saloon::fake([
+        MockResponse::make([
+            'status' => [
+                'code' => 200,
+                'errorcode' => 0,
+                'message' => 'OK',
+            ],
+            'response' => [
+                'results' => [
+                    [
+                        'actionid' => 'urn:onoffice-de-ns:smart:2.5:smartml:action:read',
+                        'resourceid' => '123',
+                        'resourcetype' => 'address',
+                        'cacheable' => true,
+                        'identifier' => '',
+                        'data' => [
+                            'meta' => [
+                                'cntabsolute' => 1,
+                            ],
+                            'records' => [
+                                [
+                                    'id' => 123,
+                                    'type' => 'address',
+                                    'elements' => [
+                                        'id' => 123,
+                                        'Email' => 'test@example.de',
+                                        'Vorname' => 'test',
+                                        'Name' => 'example',
+                                        'Zusatz1' => 'example llc',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        'status' => [
+                            'errorcode' => 0,
+                            'message' => 'OK',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+            status: 200
+        ),
+    ]);
+    $request = OnOfficeApiRequest::with(new ReadAddressAction());
+    $res = OnOfficeApi::send($request);
+
+    expect($res->elements(0))
+        ->toMatchArray([
+            [
+                'id' => 123,
+                'Email' => 'test@example.de',
+                'Vorname' => 'test',
+                'Name' => 'example',
+                'Zusatz1' => 'example llc',
+            ],
+        ]);
 });
